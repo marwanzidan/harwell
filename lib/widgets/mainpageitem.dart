@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:harwel1/itemprop.dart';
 
 class MainPageItem extends StatefulWidget {
   final String image, name, shortDescription, price;
+   bool cancButton = false;
   var handler;
-  MainPageItem({this.name, this.image, this.price, this.shortDescription,this.handler});
+  MainPageItem({this.name, this.image, this.price, this.shortDescription,this.handler,this.cancButton = false});
   @override
   _MainPageItemState createState() => _MainPageItemState();
 }
@@ -15,6 +17,9 @@ class _MainPageItemState extends State<MainPageItem> {
     return GestureDetector(
       onTap: (){
         setState(() {
+          Navigator.push(context, MaterialPageRoute( builder: (BuildContext context) => Itemproperties()
+                      ),
+                      );
            
 
         });
@@ -33,6 +38,8 @@ class _MainPageItemState extends State<MainPageItem> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                 widget.cancButton ? Align(alignment: Alignment.topLeft,
+                    child: Icon(Icons.cancel,color: Colors.black,)) : SizedBox(),
                   Expanded(
                     flex: 1,
                     child: Image(
@@ -54,6 +61,15 @@ class _MainPageItemState extends State<MainPageItem> {
                                     fontSize: 15,
                                     fontFamily: 'GESSBOLD'),
                               ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 180),
+                            child: Divider(
+                              color: Colors.black,
+                              thickness: 1,
+                              
+
                             ),
                           ),
                           Align(

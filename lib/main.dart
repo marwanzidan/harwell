@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:harwel1/categories.dart';
+import 'package:harwel1/deliverydetails.dart';
 import 'package:harwel1/endingorder.dart';
 import 'package:harwel1/itemprop.dart';
 import 'package:ff_navigation_bar/ff_navigation_bar.dart';
@@ -138,7 +139,17 @@ class _HomestateState extends State<Homestate> {
               highlightColor: Colors.transparent,
               hoverColor: Colors.transparent,
               focusColor: Colors.transparent,
-              icon: Icon(Icons.shopping_cart),
+              icon: GestureDetector(
+                onTap: (){
+                  setState(() {
+                    Navigator.push(context, MaterialPageRoute( builder: (BuildContext context) => Endorder()
+                      ),
+                      );
+                    
+                    
+                  });
+                },
+                child: Icon(Icons.shopping_cart)),
               onPressed: () {},
             ),
           )
@@ -149,6 +160,9 @@ class _HomestateState extends State<Homestate> {
        :selectedindex == 2 ?Categories()
        :selectedindex ==3?Profile()
        :selectedindex ==4? Itemproperties() : SizedBox(),
+    
+    
+      
      
 
        bottomNavigationBar: FFNavigationBar(
@@ -168,19 +182,19 @@ class _HomestateState extends State<Homestate> {
         items: [
           FFNavigationBarItem(
             iconData: Icons.home,
-            label: 'الرئيسية',
+            label: 'Home',
           ),
           FFNavigationBarItem(
             iconData: Icons.search,
-            label: 'البحث',
+            label: 'Search',
           ),
           FFNavigationBarItem(
             iconData: Icons.category,
-            label: 'الفئات',
+            label: 'Categories',
           ),
           FFNavigationBarItem(
             iconData: Icons.person,
-            label: 'الحساب',
+            label: 'profile',
           ),
          
         ],
