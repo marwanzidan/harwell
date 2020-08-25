@@ -1,6 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ff_navigation_bar/ff_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:harwel1/main.dart';
+import 'package:harwel1/widgets/mainpageitem.dart';
 
 Color selectedbutton = Color(0xFFFDBA52);
 
@@ -237,24 +239,32 @@ class _ItempropertiesState extends State<Itemproperties> {
                       height: 30,
 
                     ),
-                    Container(
-                      width: double.infinity,
-                       decoration: BoxDecoration(
-                      color: Color(0xFFF6BF0B),
-                      borderRadius: BorderRadius.circular(5)
+                    GestureDetector(
+                      onTap: (){
+                        setState(() {
+                         cart.add(12345);
+
+                        });
+                      },
+                                          child: Container(
+                        width: double.infinity,
+                         decoration: BoxDecoration(
+                        color: Color(0xFFF6BF0B),
+                        borderRadius: BorderRadius.circular(5)
         ),
         child: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Text('اضافة للسلة ',
-                      style: TextStyle(
-                        fontSize: 25,
-                        fontFamily: 'GESSBOLD',
-                        color : Colors.black
-                      ),),
-                    ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Text('اضافة للسلة ',
+                        style: TextStyle(
+                          fontSize: 25,
+                          fontFamily: 'GESSBOLD',
+                          color : Colors.black
+                        ),),
+                      ),
         ),
 
+                      ),
                     ),
                   ],
                 ),

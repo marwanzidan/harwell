@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:harwel1/deliverydetails.dart';
 import 'package:harwel1/widgets/mainpageitem.dart';
 
 import 'main.dart';
-import 'main.dart';
+
+
+bool appear= buttonclick();
 
 class Endorder extends StatefulWidget {
   @override
@@ -51,13 +54,16 @@ class _EndorderState extends State<Endorder> {
           mainAxisSpacing: 9,
           children: products
               .map(
-                (e) => MainPageItem(
-                  name: e['name'],
-                  image: e['imgUrl'],
-                  shortDescription: e['shortDescription'],
-                  price: e['price'],
-                  cancButton: true,
-                   
+                (e) => Visibility(
+                  visible: appear,
+                                  child: MainPageItem(
+                    name: e['name'],
+                    image: e['imgUrl'],
+                    shortDescription: e['shortDescription'],
+                    price: e['price'],
+                    cancButton: true,
+                     
+                  ),
                 ),
               )
               .toList(),
@@ -68,24 +74,35 @@ class _EndorderState extends State<Endorder> {
         [
            Padding(
             padding: const EdgeInsets.all(15),
-            child: Container(
-              width: double.infinity,
-               decoration: BoxDecoration(
-              color: Color(0xFFF6BF0B),
-              borderRadius: BorderRadius.circular(5)
+            child: GestureDetector(
+               onTap: (){
+            setState(() {
+              
+              Navigator.push(context, MaterialPageRoute( builder: (BuildContext context) => Delvdetails()
+                      ),
+                      );
+            });
+
+          },
+                          child: Container(
+                width: double.infinity,
+                 decoration: BoxDecoration(
+                color: Color(0xFFF6BF0B),
+                borderRadius: BorderRadius.circular(5)
         ),
         child: Center(
-            child: Padding(
-              padding: const EdgeInsets.all(10),
-              child: Text('تأكيد ',
-              style: TextStyle(
-                fontSize: 15,
-                fontFamily: 'GESSBOLD',
-                color : Colors.black
-              ),),
-            ),
-        ),
+                child: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Text('تأكيد ',
+                  style: TextStyle(
+        fontSize: 15,
+        fontFamily: 'GESSBOLD',
+        color : Colors.black
+                  ),),
+                ),
+          ),
 
+              ),
             ),
           ),
         ]

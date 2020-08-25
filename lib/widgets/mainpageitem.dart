@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:harwel1/itemprop.dart';
+bool clicked=true;
+buttonclick(){
+  return clicked;
+}
+
 
 class MainPageItem extends StatefulWidget {
+  
   final String image, name, shortDescription, price;
    bool cancButton = false;
   var handler;
@@ -12,6 +18,8 @@ class MainPageItem extends StatefulWidget {
 
 class _MainPageItemState extends State<MainPageItem> {
   
+  
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -39,7 +47,17 @@ class _MainPageItemState extends State<MainPageItem> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                  widget.cancButton ? Align(alignment: Alignment.topLeft,
-                    child: Icon(Icons.cancel,color: Colors.black,)) : SizedBox(),
+                    child: GestureDetector(
+                      onTap: (){
+                        setState(() {
+                          clicked = false;
+                          buttonclick();
+                         
+                        });
+                        
+                      },
+                      
+                      child: Icon(Icons.cancel,color: Colors.black,))) : SizedBox(),
                   Expanded(
                     flex: 1,
                     child: Image(

@@ -44,6 +44,56 @@ class MyApp extends StatelessWidget {
   }
 }
 
+List cart =[
+  
+
+];
+
+
+List address = [
+
+  {
+    'street' : 'شارع الملك خالد',
+    'building no' : 'مبني 43',
+    'app no' : 'شقة 3',
+    'details' : 'بجوار بقالة المحمودية',
+    'country' : 'السعودية'
+
+  },
+  {
+    'street' : 'شارع الملك خالد',
+    'building no' : 'مبني 43',
+    'app no' : 'شقة 3',
+    'details' : 'بجوار بقالة المحمودية',
+    'country' : 'السعودية'
+
+  },
+  {
+    'street' : 'شارع الملك خالد',
+    'building no' : 'مبني 43',
+    'app no' : 'شقة 3',
+    'details' : 'بجوار بقالة المحمودية',
+    'country' : 'السعودية'
+
+  },
+
+];
+
+List billdetails = [
+  { 
+    'total before' : '175 ريال سعودي',
+    'discount' : '10 ريال',
+    'delivery' : ' 20 ريال',
+    'Tax' : '140 ريال ',
+    'total after' : '300 ريال'
+
+  }
+
+
+
+];
+
+
 List photoGallery = [
   {
     'imgUrl': 'images/Image 2.png',
