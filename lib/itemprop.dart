@@ -56,41 +56,45 @@ class _ItempropertiesState extends State<Itemproperties> {
                             const EdgeInsets.only(top: 38, right: 50, left: 50),
                         child: Column(
                           children: [
-                            CarouselSlider(
-                              options: CarouselOptions(
-                                scrollPhysics: ScrollPhysics(),
-                                viewportFraction: 1,
-                                initialPage: 0,
-                                enableInfiniteScroll: true,
-                                reverse: false,
-                                autoPlay: true,
-                                autoPlayInterval: Duration(seconds: 3),
-                                autoPlayAnimationDuration: Duration(seconds: 1),
-                                autoPlayCurve: Curves.fastOutSlowIn,
-                                scrollDirection: Axis.horizontal,
-                                onPageChanged: (index, reason) => {
-                                  setState(() {
-                                    _current = index;
-                                  })
-                                },
-                              ),
-                              items: photoGallery.map((i) {
-                                return Builder(
-                                  builder: (BuildContext context) {
-                                    return Container(
-                                      width: MediaQuery.of(context).size.width,
-                                      child: ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.all(Radius.circular(12)),
-                                        child: Image.asset(
-                                          i['imgUrl'],
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                    );
+                            Container(
+                              height: 300,
+
+                              child: CarouselSlider(
+                                options: CarouselOptions(
+                                  scrollPhysics: ScrollPhysics(),
+                                  viewportFraction: 1,
+                                  initialPage: 0,
+                                  enableInfiniteScroll: true,
+                                  reverse: false,
+                                  autoPlay: true,
+                                  autoPlayInterval: Duration(seconds: 3),
+                                  autoPlayAnimationDuration: Duration(seconds: 1),
+                                  autoPlayCurve: Curves.fastOutSlowIn,
+                                  scrollDirection: Axis.horizontal,
+                                  onPageChanged: (index, reason) => {
+                                    setState(() {
+                                      _current = index;
+                                    })
                                   },
-                                );
-                              }).toList(),
+                                ),
+                                items: photoGallery.map((i) {
+                                  return Builder(
+                                    builder: (BuildContext context) {
+                                      return Container(
+                                        width: MediaQuery.of(context).size.width,
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.all(Radius.circular(12)),
+                                          child: Image.asset(
+                                            i['imgUrl'],
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  );
+                                }).toList(),
+                              ),
                             ),
                             SingleChildScrollView(
                               scrollDirection: Axis.horizontal,
