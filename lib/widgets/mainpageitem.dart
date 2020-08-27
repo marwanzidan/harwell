@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:harwel1/itemprop.dart';
+import 'package:harwel1/props.dart';
 bool clicked=true;
 buttonclick(){
   return clicked;
@@ -25,7 +26,7 @@ class _MainPageItemState extends State<MainPageItem> {
     return GestureDetector(
       onTap: (){
         setState(() {
-          Navigator.push(context, MaterialPageRoute( builder: (BuildContext context) => Itemproperties()
+          Navigator.push(context, MaterialPageRoute( builder: (BuildContext context) => Props()
                       ),
                       );
            

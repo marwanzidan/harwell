@@ -36,37 +36,41 @@ class _RegistrationState extends State<Registration> {
                  Info('البريد الالكتروني'),
             
 
-            Padding(
-              padding: const EdgeInsets.only(left: 260,top: 20),
-              child: Container(
+            Align(
+              alignment: Alignment.centerRight,
+                          child: Padding(
+                padding: const EdgeInsets.only(left: 260,top: 20),
+                child: Container(
 
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    color : Colors.black,
-                    border: Border.all(
-                      color: Colors.white
-                    )
+width: 150,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                      color : Colors.black,
+                      border: Border.all(
+                        color: Colors.white
+                      )
 
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: Row(
-                     
-                      children: [
-                        Text('مدعوم بواسطة',
-                        style: TextStyle(
-              color: Colors.white,
-              fontFamily: 'GESSLIGHT',
-              fontSize: 12
-                        ),
-                        ),
-                        Image(image: AssetImage('images/osicon.png'))
-                      ],
                     ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Row(
+                       
+                        children: [
+                          Text('مدعوم بواسطة',
+                          style: TextStyle(
+                color: Colors.white,
+                fontFamily: 'GESSLIGHT',
+                fontSize: 12
+                          ),
+                          ),
+                          Image(image: AssetImage('images/osicon.png'))
+                        ],
+                      ),
+                    ),
+
+
                   ),
-
-
-                ),
+              ),
             ),
 
                       Padding(

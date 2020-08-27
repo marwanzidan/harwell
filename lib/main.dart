@@ -9,6 +9,7 @@ import 'package:harwel1/mainpage.dart';
 import 'package:harwel1/myorder.dart';
 import 'package:harwel1/profile.dart';
 import 'package:harwel1/login.dart';
+import 'package:harwel1/props.dart';
 import 'package:harwel1/search.dart';
 
 
@@ -51,6 +52,22 @@ List cart =[
   
 
 ];
+
+List photoGalleryprop = [
+  {'imgUrl': 'images/propimg.png'},
+{'imgUrl': 'images/propimg.png'},
+{'imgUrl': 'images/propimg.png'},
+{'imgUrl': 'images/propimg.png'},
+{'imgUrl': 'images/propimg.png'},
+];
+List selectedsize = [
+  {
+    'size': 'كبير',
+    'selected': true,
+  },
+  {'size': 'صغير', 'selected': false},
+];
+
 
 List orders= [
   {

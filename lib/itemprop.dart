@@ -7,20 +7,7 @@ import 'package:harwel1/widgets/mainpageitem.dart';
 
 Color selectedbutton = Color(0xFFFDBA52);
 
-List photoGallery = [
-  {'imgUrl': 'images/propimg.png'},
-{'imgUrl': 'images/propimg.png'},
-{'imgUrl': 'images/propimg.png'},
-{'imgUrl': 'images/propimg.png'},
-{'imgUrl': 'images/propimg.png'},
-];
-List selectedsize = [
-  {
-    'size': 'كبير',
-    'selected': true,
-  },
-  {'size': 'صغير', 'selected': false},
-];
+
 
 class Itemproperties extends StatefulWidget {
   @override
