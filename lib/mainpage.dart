@@ -16,6 +16,8 @@ class _MainPageState extends State<MainPage> {
   int _current = 0;
   @override
   Widget build(BuildContext context) {
+    var width = MediaQuery.of(context).size.width;
+    print(width == 500);
     return CustomScrollView(
       slivers: <Widget>[
         SliverPadding(
@@ -23,14 +25,12 @@ class _MainPageState extends State<MainPage> {
           sliver: SliverList(
             delegate: SliverChildListDelegate(
               [
-              
+                // SizedBox(height: 20,),
                 Container(
-                  
-                  width: MediaQuery.of(context).size.width,
+                  height: 350,
                   child: CarouselSlider(
                     
                     options: CarouselOptions(
-                      scrollPhysics: ScrollPhysics(),
                       viewportFraction: 1,
                       initialPage: 0,
                       enableInfiniteScroll: true,
@@ -85,6 +85,7 @@ class _MainPageState extends State<MainPage> {
                     ),
                   ),
                 ),
+                
               ],
             ),
           ),
@@ -92,8 +93,8 @@ class _MainPageState extends State<MainPage> {
         SliverPadding(
           padding: EdgeInsets.all(12),
           sliver: SliverGrid.count(
-            crossAxisCount: 2,
-            childAspectRatio: (3 / 4),
+            crossAxisCount: width > 700 ? 4  : 2,
+            childAspectRatio: width > 700 ? 0.7  : 1 ,
             crossAxisSpacing: 9,
             mainAxisSpacing: 9,
             children: products

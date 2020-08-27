@@ -48,8 +48,8 @@ class _EndorderState extends State<Endorder> {
       SliverPadding(
         padding: EdgeInsets.all(12),
         sliver: SliverGrid.count(
-          crossAxisCount: 1,
-          childAspectRatio: 2,
+           crossAxisCount: MediaQuery.of(context).size.width > 700 ? 4  : 2,
+            childAspectRatio: MediaQuery.of(context).size.width > 700 ? 1.5  : 1 ,
           crossAxisSpacing: 9,
           mainAxisSpacing: 9,
           children: products
