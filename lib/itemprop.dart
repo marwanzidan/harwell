@@ -1,23 +1,25 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ff_navigation_bar/ff_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:harwel1/endingorder.dart';
 import 'package:harwel1/main.dart';
 import 'package:harwel1/widgets/mainpageitem.dart';
 
 Color selectedbutton = Color(0xFFFDBA52);
 
 List photoGallery = [
-  {'imgUrl': 'images/Image 3.png'},
-  {'imgUrl': 'images/Image 3.png'},
-  {'imgUrl': 'images/Image 3.png'},
-  {'imgUrl': 'images/Image 3.png'},
+  {'imgUrl': 'images/propimg.png'},
+{'imgUrl': 'images/propimg.png'},
+{'imgUrl': 'images/propimg.png'},
+{'imgUrl': 'images/propimg.png'},
+{'imgUrl': 'images/propimg.png'},
 ];
 List selectedsize = [
   {
-    'size': '41',
+    'size': 'كبير',
     'selected': true,
   },
-  {'size': '42', 'selected': false},
+  {'size': 'صغير', 'selected': false},
 ];
 
 class Itemproperties extends StatefulWidget {
@@ -34,9 +36,32 @@ class _ItempropertiesState extends State<Itemproperties> {
       child: Scaffold(
         appBar: AppBar(
         title: Image(
-          image: AssetImage('images/logo.png'),
-        ),),
-        backgroundColor: Color(0xFF151313),
+          image: AssetImage('images/feederlogo.png'),
+        ),
+          actions: [
+          Center(
+            child: IconButton(
+              splashColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              hoverColor: Colors.transparent,
+              focusColor: Colors.transparent,
+              icon: GestureDetector(
+                onTap: (){
+                  setState(() {
+                    Navigator.push(context, MaterialPageRoute( builder: (BuildContext context) => Endorder()
+                      ),
+                      );
+                    
+                    
+                  });
+                },
+                child: Icon(Icons.shopping_cart,color: Colors.black,)),
+              onPressed: () {},
+            ),
+          )
+        ],
+        ),
+        
         body: SingleChildScrollView(
                   child: Padding(
             padding: const EdgeInsets.only(right: 18, left: 18, top: 9),
@@ -124,7 +149,7 @@ class _ItempropertiesState extends State<Itemproperties> {
                          Padding(
                           padding: const EdgeInsets.all(25),
                           child: Text(
-                            'حذاء رياضي',
+                            ' بيتزا سوبر سوبريم',
                             style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 25,
@@ -144,7 +169,7 @@ class _ItempropertiesState extends State<Itemproperties> {
                               textBaseline: TextBaseline.alphabetic,
                               children: [
                                 Text(
-                                  'SAR',
+                                  'EG',
                                   style: TextStyle(
                                       fontFamily: 'LATOLIGHT',
                                       fontSize: 12,
@@ -154,7 +179,7 @@ class _ItempropertiesState extends State<Itemproperties> {
                                 Padding(
                                   padding: const EdgeInsets.all(2),
                                   child: Text(
-                                    '145',
+                                    '60',
                                     style: TextStyle(
                                         fontFamily: 'LATOBLACK',
                                         fontSize: 20,
@@ -185,17 +210,14 @@ class _ItempropertiesState extends State<Itemproperties> {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
-                            'اختر المقاس',
+                            'اختر الحجم',
                             style: TextStyle(
                                 fontSize: 15,
                                 fontFamily: 'GESSBOLD',
                                 color: Colors.black),
                           ),
                         ),
-                        Icon(
-                          Icons.photo_size_select_actual,
-                          size: 30,
-                        ),
+                        
                       ],
                     ),
                     Container(
@@ -207,34 +229,8 @@ class _ItempropertiesState extends State<Itemproperties> {
                               .map((x) => Chossing(x['size'], x['selected']))
                               .toList()),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            'اختر اللون',
-                            style: TextStyle(
-                                fontSize: 15,
-                                fontFamily: 'GESSBOLD',
-                                color: Colors.black),
-                          ),
-                        ),
-                        Icon(
-                          Icons.color_lens,
-                          size: 30,
-                        ),
-                      ],
-                    ),
-                    Container(
-                      height: 70,
-                      child: GridView.count(
-                          crossAxisCount: 4,
-                          childAspectRatio: 1.8,
-                          children: selectedsize
-                              .map((x) => Chossing(x['size'], x['selected']))
-                              .toList()),
-                    ),
+
+                    
                     SizedBox(
                       height: 30,
 
@@ -275,11 +271,13 @@ class _ItempropertiesState extends State<Itemproperties> {
         ),
       bottomNavigationBar: FFNavigationBar(
         theme: FFNavigationBarTheme(
-          barBackgroundColor: Colors.black,
+         barBackgroundColor: Color(0xFFF79324),
           selectedItemBorderColor: Color(0xFFFDBA52),
           selectedItemBackgroundColor: Color(0xFFFDBA52),
-          selectedItemIconColor: Colors.white,
-          selectedItemLabelColor: Colors.white,
+          selectedItemIconColor: Colors.black,
+          selectedItemLabelColor: Colors.black,
+          unselectedItemIconColor: Colors.white,
+          unselectedItemLabelColor: Colors.white
         ),
         selectedIndex: selectedindex,
         onSelectTab: (index) {
@@ -287,24 +285,25 @@ class _ItempropertiesState extends State<Itemproperties> {
             selectedindex = index;
           });
         },
-        items: [
+               items: [
           FFNavigationBarItem(
             iconData: Icons.home,
-            label: 'الرئيسية',
+            label: 'Home',
           ),
           FFNavigationBarItem(
             iconData: Icons.search,
-            label: 'البحث',
+            label: 'Search',
           ),
           FFNavigationBarItem(
             iconData: Icons.category,
-            label: 'الفئات',
+            label: 'Categories',
           ),
           FFNavigationBarItem(
             iconData: Icons.person,
-            label: 'الحساب',
+            label: 'profile',
           ),
          
+        
         ],
       ),
       ),

@@ -22,19 +22,19 @@ class _CategoriesState extends State<Categories> {
 
   final List<dynamic>  categoriesList = [
     {
-      "name" : "رياضي",
+      "name" : "باستا",
       "id" : "abc123"
     },
     {
-      "name" : "اطفالي",
+      "name" : "بيتزا",
       "id" : "abc12123"
     },
     {
-      "name" : "رجالي",
+      "name" : "اضافات",
       "id" : "abc12dd3"
     },
       {
-      "name" : "تخفيضات",
+      "name" : "مشروبات",
       "id" : "abc12dc3"
     },
     
@@ -120,10 +120,21 @@ class Categoriesbutton extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
+              
           decoration: BoxDecoration(
+                           boxShadow: [
+      BoxShadow(
+        color: Color(0xFF979595).withOpacity(0.2),
+        spreadRadius: 1,
+        blurRadius: 6,
+        offset: Offset(0, 3), // changes position of shadow
+      ),
+    ],
+            
             borderRadius: BorderRadius.circular(5),
             color: isSelected ? Colors.orange : Colors.white
           ),
+          
           child:Center(
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 8,horizontal: 5),

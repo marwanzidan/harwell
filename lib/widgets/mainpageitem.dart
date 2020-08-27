@@ -35,12 +35,25 @@ class _MainPageItemState extends State<MainPageItem> {
           child: Stack(
         children: [
           Container(
+            
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.all(
                 Radius.circular(10),
               ),
+              border: Border.all(
+                color: Colors.white
+              ),
+               boxShadow: [
+      BoxShadow(
+        color: Color(0xFF979595).withOpacity(0.2),
+        spreadRadius: 0.1,
+        blurRadius: 6,
+        offset: Offset(0, 3), // changes position of shadow
+      ),
+    ],
             ),
+            
             child: Padding(
               padding: const EdgeInsets.all(9.0),
               child: Column(
@@ -60,8 +73,11 @@ class _MainPageItemState extends State<MainPageItem> {
                       child: Icon(Icons.cancel,color: Colors.black,))) : SizedBox(),
                   Expanded(
                     flex: 1,
-                    child: Image(
-                      image: AssetImage(widget.image),
+                    child: Align(
+                      alignment: Alignment.topRight,
+                                          child: Image(
+                        image: AssetImage(widget.image),
+                      ),
                     ),
                   ),
                   Expanded(
@@ -84,7 +100,7 @@ class _MainPageItemState extends State<MainPageItem> {
                           Padding(
                             padding: const EdgeInsets.only(left: 180),
                             child: Divider(
-                              color: Colors.black,
+                              color: Color(0xFF707070),
                               thickness: 1,
                               
 
@@ -96,8 +112,8 @@ class _MainPageItemState extends State<MainPageItem> {
                               widget.shortDescription,
                               style: TextStyle(
                                   color: Color(0xFF6B6363),
-                                  fontSize: 11,
-                                  fontFamily: 'GESSMEDIUM'),
+                                  fontSize: 10,
+                                  fontFamily: 'GESSLIGHT'),
                             ),
                           ),
                         ],
@@ -133,7 +149,7 @@ class _MainPageItemState extends State<MainPageItem> {
                               fontFamily: 'LATOREGULAR'),
                         ),
                         TextSpan(
-                          text: ' SAR',
+                          text: ' EG',
                           style: TextStyle(
                             fontFamily: 'LATOTHIN',
                             color: Colors.black,

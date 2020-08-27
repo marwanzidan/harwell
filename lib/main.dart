@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:harwel1/categories.dart';
 import 'package:harwel1/deliverydetails.dart';
 import 'package:harwel1/endingorder.dart';
+
 import 'package:harwel1/itemprop.dart';
 import 'package:ff_navigation_bar/ff_navigation_bar.dart';
 import 'package:harwel1/mainpage.dart';
+import 'package:harwel1/myorder.dart';
 import 'package:harwel1/profile.dart';
+import 'package:harwel1/login.dart';
 import 'package:harwel1/search.dart';
 
 
@@ -22,8 +25,8 @@ class MyApp extends StatelessWidget {
       title: 'HAROOL',
       theme: ThemeData(
         fontFamily: 'GESSMEDIUM',
-        scaffoldBackgroundColor: Color(0xFF151313),
-        appBarTheme: AppBarTheme(color: Colors.black, centerTitle: true),
+        scaffoldBackgroundColor: Colors.white,
+        appBarTheme: AppBarTheme(color: Colors.white, centerTitle: true),
         iconTheme: IconThemeData(color: Colors.white),
         accentColor: Color(0xFFFDBA52),
         bottomNavigationBarTheme:
@@ -39,13 +42,48 @@ class MyApp extends StatelessWidget {
           child: child,
         );
       },
-      home: Homestate(),
+      home: Login(),
     );
   }
 }
 
 List cart =[
   
+
+];
+
+List orders= [
+  {
+    'order no' : '#123',
+    'date' : '23/8/2020',
+    'time' : '5:20 pm',
+    'the order' : 'بيتزا خضار',
+    'delivery fees' : '200 جنيه',
+    'total' : '10 جنيه',
+    'address' : ' المعادي'
+
+  },
+   {
+    'order no' : '#123',
+    'date' : '23/8/2020',
+    'time' : '5:20 pm',
+    'the order' : 'بيتزا خضار',
+    'delivery fees' : '200 جنيه',
+    'total' : '10 جنيه',
+    'address' : ' المعادي'
+
+  },
+   {
+    'order no' : '#123',
+    'date' : '23/8/2020',
+    'time' : '5:20 pm',
+    'the order' : 'بيتزا خضار',
+    'delivery fees' : '200 جنيه',
+    'total' : '10 جنيه',
+    'address' : ' المعادي'
+
+  },
+
 
 ];
 
@@ -96,53 +134,57 @@ List billdetails = [
 
 List photoGallery = [
   {
-    'imgUrl': 'images/Image 2.png',
+    'imgUrl': 'images/feeder1.png',
   },
   {
-    'imgUrl': 'images/Image 2.png',
+    'imgUrl': 'images/feeder1.png',
   },
   {
-    'imgUrl': 'images/Image 2.png',
+    'imgUrl': 'images/feeder1.png',
   },
 
 ];
 
 List products=[
   {
-    'name' : 'حذاء رياضي',
-    'imgUrl' : 'images/Image 3.png',
-    'shortDescription' : 'حذاء رياضي شبابي لمختلف الاعمار ',
+    'name' : ' سوبر سوبريم',
+    'imgUrl' : 'images/feeder2.png',
+    'shortDescription' : ' صدور دجاج وموتزاريلا ',
+    'price' : ' 60'
+
+  },
+  {
+    'name' : '  بيتزا تشكين رانش',
+    'imgUrl' : 'images/feeder3.png',
+    'shortDescription' : ' صدور دجاج وموتزاريلا ',
     'price' : ' 150'
 
   },
-    {
-    'name' : 'حذاء رياضي',
-    'imgUrl' : 'images/Image 4.png',
-    'shortDescription' : 'حذاء رياضي شبابي لمختلف الاعمار ',
-    'price' : ' 230'
+  {
+    'name' : ' سوبر سوبريم',
+    'imgUrl' : 'images/feeder2.png',
+    'shortDescription' : ' صدور دجاج وموتزاريلا ',
+    'price' : ' 60'
 
   },
-    {
-    'name' : 'حذاء رياضي',
-    'imgUrl' : 'images/Image 3.png',
-    'shortDescription' : 'حذاء رياضي شبابي لمختلف الاعمار',
+  {
+    'name' : '  بيتزا تشكين رانش',
+    'imgUrl' : 'images/feeder3.png',
+    'shortDescription' : ' صدور دجاج وموتزاريلا ',
     'price' : ' 150'
 
   },
-    {
-    'name' : 'حذاء رياضي',
-    'imgUrl' : 'images/Image 4.png',
-    'shortDescription' : 'حذاء رياضي شبابي لمختلف الاعمار',
-    'price' : ' 230'
+  {
+    'name' : ' سوبر سوبريم',
+    'imgUrl' : 'images/feeder2.png',
+    'shortDescription' : ' صدور دجاج وموتزاريلا ',
+    'price' : ' 60'
 
   },
-    {
-    'name' : 'حذاء رياضي',
-    'imgUrl' : 'images/Image 3.png',
-      'shortDescription' : 'حذاء رياضي شبابي لمختلف الاعمار',
-    'price' : ' 150'
-
-  },
+ 
+  
+    
+ 
 
 
 ];
@@ -180,7 +222,7 @@ class _HomestateState extends State<Homestate> {
     return Scaffold(
       appBar: AppBar(
         title: Image(
-          image: AssetImage('images/logo.png'),
+          image: AssetImage('images/feederlogo.png'),
         ),
          actions: [
           Center(
@@ -199,7 +241,7 @@ class _HomestateState extends State<Homestate> {
                     
                   });
                 },
-                child: Icon(Icons.shopping_cart)),
+                child: Icon(Icons.shopping_cart,color: Colors.black,)),
               onPressed: () {},
             ),
           )
@@ -211,17 +253,18 @@ class _HomestateState extends State<Homestate> {
        :selectedindex ==3?Profile()
        :selectedindex ==4? Itemproperties() : SizedBox(),
     
-    
-      
      
 
        bottomNavigationBar: FFNavigationBar(
         theme: FFNavigationBarTheme(
-          barBackgroundColor: Colors.black,
+          barBackgroundColor: Color(0xFFF79324),
           selectedItemBorderColor: Color(0xFFFDBA52),
           selectedItemBackgroundColor: Color(0xFFFDBA52),
-          selectedItemIconColor: Colors.white,
-          selectedItemLabelColor: Colors.white,
+          selectedItemIconColor: Colors.black,
+          selectedItemLabelColor: Colors.black,
+          unselectedItemIconColor: Colors.white,
+          unselectedItemLabelColor: Colors.white
+          
         ),
         selectedIndex: selectedindex,
         onSelectTab: (index) {
@@ -232,19 +275,19 @@ class _HomestateState extends State<Homestate> {
         items: [
           FFNavigationBarItem(
             iconData: Icons.home,
-            label: 'Home',
+            label: '',
           ),
           FFNavigationBarItem(
             iconData: Icons.search,
-            label: 'Search',
+            label: '',
           ),
           FFNavigationBarItem(
             iconData: Icons.category,
-            label: 'Categories',
+            label: '',
           ),
           FFNavigationBarItem(
             iconData: Icons.person,
-            label: 'profile',
+            label: '',
           ),
          
         ],

@@ -13,14 +13,35 @@ class _DelvdetailsState extends State<Delvdetails> {
     return Scaffold(
       appBar: AppBar(
         title: Image(
-          image: AssetImage('images/logo.png'),
+          image: AssetImage('images/feederlogo.png'),
         ),
        ),
-      body:Column(
+      body:CustomScrollView(
+        slivers: <Widget> [
+
+          SliverPadding(padding: EdgeInsets.all(0),
+          sliver: SliverList(delegate: SliverChildListDelegate(
+
+            [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+
+          Align(
+              alignment: Alignment.topRight,
+                        child: Text('تفاصيل التوصيل',style: 
+              TextStyle(
+                fontFamily: 'GESSLIGHT',
+                fontSize: 30,
+                color: Colors.black
+
+              
+              ),),
+          ),
            Container(
-        height: 500,
+        height: 460,
         decoration: BoxDecoration(
           color:Colors.white,
           borderRadius: BorderRadius.circular(11)
@@ -30,7 +51,7 @@ class _DelvdetailsState extends State<Delvdetails> {
 
           children: [
          
-                Details('العنوان'),
+                  Details('العنوان'),
             Details('اسم الشارع'),
             Details('رقم المبني'),
             Details('رقم الشقة'),
@@ -41,43 +62,67 @@ class _DelvdetailsState extends State<Delvdetails> {
         ),
 
       ),
-      GestureDetector(
-               onTap: (){
-            setState(() {
-              
-              Navigator.push(context, MaterialPageRoute( builder: (BuildContext context) => Address()
-                      ),
-                      );
-            });
-
-          },
-                          child: Container(
-                width: double.infinity,
-                 decoration: BoxDecoration(
-                color: Color(0xFFF6BF0B),
-                borderRadius: BorderRadius.circular(5)
-        ),
-        child: Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Text('تأكيد ',
-                  style: TextStyle(
-        fontSize: 15,
-        fontFamily: 'GESSBOLD',
-        color : Colors.black
-                  ),),
-                ),
-          ),
-
-              ),
-            ),
+     
 
         ],
       ),
+              ),
+            ]
+          )
+          
+          ),
+          
+          
+          
+          )
+        ]
+        
+        
+
+      ),
+      bottomNavigationBar: BottomAppBar(
+       
+       child:  Padding(
+       padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 13),
+         child: GestureDetector(
+            onTap: (){
+         setState(() {
+           
+           Navigator.push(context, MaterialPageRoute( builder: (BuildContext context) => Address()
+               ),
+               );
+         });
+
+            },
+                   child: Container(
+         width: double.infinity,
+         height: 70,
+          decoration: BoxDecoration(
+         color: Color(0xFFF6BF0B),
+         borderRadius: BorderRadius.circular(5)
+          ),
+          child: Center(
+         child: Padding(
+           padding: const EdgeInsets.all(20),
+           child: Text('تأكيد ',
+           style: TextStyle(
+          fontSize: 25,
+          fontFamily: 'GESSBOLD',
+          color : Colors.black
+           ),),
+         ),
+            ),
+
+           ),
+         ),
+       ),
+     ),
       
     );
   }
 }
+
+
  
 
 class Details extends StatelessWidget {

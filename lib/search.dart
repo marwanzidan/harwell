@@ -23,7 +23,7 @@ class _SearchscreenState extends State<Searchscreen> {
       slivers: <Widget>[
         
     SliverPadding(
-      padding: EdgeInsets.all(0),
+      padding: EdgeInsets.all(10),
       sliver: SliverList(
     delegate: SliverChildListDelegate(
       [
@@ -36,12 +36,16 @@ class _SearchscreenState extends State<Searchscreen> {
           
           
           decoration: InputDecoration(
+
+            
+
             
             
             
-            prefixIcon: Icon(Icons.search,color: Colors.white,),
+            prefixIcon: Icon(Icons.search,color: Colors.black,),
             
             hintText: 'اكتب الاسم الذي ترغب في البحث عنه',
+            
             hintStyle: TextStyle(
               fontFamily: 'GESSLIGHT',
               fontSize: 10,
@@ -49,8 +53,9 @@ class _SearchscreenState extends State<Searchscreen> {
 
             ),
             enabledBorder: UnderlineInputBorder(
+
               borderSide: BorderSide(
-                color: Colors.white
+                color: Color(0xFFA8A8A8)
 
               ),
             ),

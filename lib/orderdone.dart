@@ -14,7 +14,7 @@ class _OrderdoneState extends State<Orderdone> {
 
       appBar: AppBar(
         title: Image(
-          image: AssetImage('images/logo.png'),
+          image: AssetImage('images/feederlogo.png'),
         ),
        ),
        body: Column(
@@ -25,7 +25,7 @@ class _OrderdoneState extends State<Orderdone> {
            style: TextStyle(
              fontSize: 30,
              fontFamily: 'GESSLIGHT',
-             color: Colors.white
+             color: Colors.black
 
            ),),
            Padding(

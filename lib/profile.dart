@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:harwel1/myorder.dart';
 
 
 class Profile extends StatefulWidget {
@@ -19,9 +20,19 @@ class _ProfileState extends State<Profile> {
           padding: const EdgeInsets.all(8.0),
           child: Row(
             children: [
-               Topprofileicons( FontAwesomeIcons.cubes,'طلباتي'),
-                 Topprofileicons( FontAwesomeIcons.solidHeart,'قائمة الامنيات'),
-              Topprofileicons( FontAwesomeIcons.user,'الاعدادات'),
+               Expanded(
+                                child: GestureDetector(
+                   onTap: (){
+                     setState(() {
+                         Navigator.push(context, MaterialPageRoute( builder: (BuildContext context) => Myorders()
+                        ),
+                        );
+                     });
+                   },
+                   child: Topprofileicons( FontAwesomeIcons.cubes,'طلباتي')),
+               ),
+                 Expanded(child: Topprofileicons( FontAwesomeIcons.solidHeart,'قائمة الامنيات')),
+              Expanded(child: Topprofileicons( FontAwesomeIcons.user,'الاعدادات')),
             
              
             ],
@@ -35,7 +46,7 @@ class _ProfileState extends State<Profile> {
             style : TextStyle(
               fontFamily: 'GESSMED',
               fontSize: 20,
-              color: Colors.white
+              color: Colors.black
             )),
           ),
         ),
@@ -45,8 +56,8 @@ class _ProfileState extends State<Profile> {
           child: Otherlinks('عن هرول'),
         ),
 
-        Divider(
-          color: Colors.white,
+       Divider(
+          color: Color(0xFFF0F0F0),
           thickness: 2,
         ),
 
@@ -55,7 +66,7 @@ class _ProfileState extends State<Profile> {
           child: Otherlinks('الشروط والاحكام'),
         ),
          Divider(
-          color: Colors.white,
+          color: Color(0xFFF0F0F0),
           thickness: 2,
         ),
 
@@ -63,8 +74,8 @@ class _ProfileState extends State<Profile> {
           padding: const EdgeInsets.all(8.0),
           child: Otherlinks('سياسة الخصوصية والاستبدال'),
         ),
-         Divider(
-          color: Colors.white,
+        Divider(
+          color: Color(0xFFF0F0F0),
           thickness: 2,
         ),
 
@@ -72,10 +83,44 @@ class _ProfileState extends State<Profile> {
           padding: const EdgeInsets.all(8.0),
           child: Otherlinks('الأسئلة المكررة'),
         ),
-         Divider(
-          color: Colors.white,
+        Divider(
+          color: Color(0xFFF0F0F0),
           thickness: 2,
         ),
+        Padding(
+              padding: const EdgeInsets.only(top: 20,left: 140,right: 140),
+              child: Container(
+
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    color : Colors.black,
+                    border: Border.all(
+                      color: Colors.white
+                    )
+
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                     
+                      children: [
+                        Text('مدعوم بواسطة',
+                        style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'GESSLIGHT',
+              fontSize: 12
+                        ),
+                        ),
+                        Image(image: AssetImage('images/osicon.png'))
+                      ],
+                    ),
+                  ),
+
+
+                ),
+            ),
+
           ],
 
         ),
@@ -102,6 +147,7 @@ class _ProfileState extends State<Profile> {
             ),
           ),
           
+          
 
       ],
       
@@ -126,9 +172,9 @@ final String txt;
         style : TextStyle(
           fontFamily: 'GESSLIGHT',
           fontSize: 20,
-          color: Colors.white
+          color: Colors.black
         )),
-         Icon(Icons.keyboard_arrow_left,size: 20,),
+         Icon(Icons.keyboard_arrow_left,size: 20,color: Colors.black,),
 
       ],
     );
@@ -143,31 +189,29 @@ class Topprofileicons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-          child: Padding(
-            padding: const EdgeInsets.all(2),
-            child: Container(
+    return Padding(
+      padding: const EdgeInsets.all(2),
+      child: Container(
         decoration: BoxDecoration(
-            color: Color(0xFFF6BF0B),
-            borderRadius: BorderRadius.circular(5)
+      color: Color(0xFFF6BF0B),
+      borderRadius: BorderRadius.circular(5)
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 5,vertical: 19),
-          child: Column(
-              children: [
-                FaIcon(ic,color:Colors.black,size : 40),
-                Text(ictxt,
-                style: TextStyle(
-                  fontFamily: 'GESSBOLD',
-                  fontSize: 15,
-                  color: Colors.black
-                ),
-                )
-              ],
+    padding: const EdgeInsets.symmetric(horizontal: 5,vertical: 19),
+    child: Column(
+        children: [
+          FaIcon(ic,color:Colors.black,size : 40),
+          Text(ictxt,
+          style: TextStyle(
+            fontFamily: 'GESSBOLD',
+            fontSize: 15,
+            color: Colors.black
           ),
+          )
+        ],
+    ),
         ),
       ),
-          ),
     );
   }
 }

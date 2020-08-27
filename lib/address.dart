@@ -13,115 +13,139 @@ class _AddressState extends State<Address> {
     return Scaffold(
        appBar: AppBar(
         title: Image(
-          image: AssetImage('images/logo.png'),
+          image: AssetImage('images/feederlogo.png'),
         ),
        ),
-          body: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children:[ SingleChildScrollView(
-        child: Column(
-            children: [
-              
-              Container(
-                width: double.infinity,
-                 height: 500,
-            decoration: BoxDecoration(
-              color:Colors.white,
-              borderRadius: BorderRadius.circular(11)
-
-            ),
+          body: Padding(
+            padding: const EdgeInsets.all(8.0),
             child: Column(
-                        children:[ 
-                          Align(
-                            alignment: Alignment.centerRight,
-                                                    child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Addresstxt('اختر عنوان التوصيل'),
-              ),
-                          ),
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children:[ SingleChildScrollView(
                           
-                          Column(
-                
-                children : address.map((x) => 
-                Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Color(0XFFEFD7D7)
-                    )
-                  ),
-                  child: Row(
-                    
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                     
+        child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Align(
+              alignment: Alignment.topRight,
+                          child: Text('تفاصيل التوصيل',style: 
+              TextStyle(
+                  fontFamily: 'GESSLIGHT',
+                  fontSize: 30,
+                  color: Colors.black
 
-                      Padding(
-                        padding: const EdgeInsets.all(17.0),
-                        child: Column(
-                          children: [
-                             Addresstxt(x['street']),
-                     Addresstxt(x['building no']),
-                        Addresstxt(x['app no'])
-                          ],
-
-                        ),
-                      ),
-                       Icon(Icons.verified_user,color: Colors.black,),
-                    ],
-
-                  ),
-
+              
+              ),),
+            ),
                 ),
                 
-                
-                ).toList()
-              ),
+                Container(
+                  width: double.infinity,
+                   height: 460,
+              decoration: BoxDecoration(
+                color:Colors.white,
+                borderRadius: BorderRadius.circular(11)
 
-              
-              ],
-            ),
               ),
-            ],
+              child: Column(
+                          children:[ 
+                            Align(
+                              alignment: Alignment.centerRight,
+                                                      child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Addresstxt('اختر عنوان التوصيل'),
+                ),
+                            ),
+                            
+                            Column(
+                  
+                  children : address.map((x) => 
+                  Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Color(0XFFEFD7D7)
+                      )
+                    ),
+                    child: Row(
+                      
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                       
+
+                        Padding(
+                          padding: const EdgeInsets.all(17.0),
+                          child: Column(
+                            children: [
+                               Addresstxt(x['street']),
+                       Addresstxt(x['building no']),
+                          Addresstxt(x['app no'])
+                            ],
+
+                          ),
+                        ),
+                         Icon(Icons.verified_user,color: Colors.black,),
+                      ],
+
+                    ),
+
+                  ),
+                  
+                  
+                  ).toList()
+                ),
+
+                
+                ],
+              ),
+                ),
+              ],
         ),
         
       ),
-       Padding(
-         padding: const EdgeInsets.all(8.0),
+       
+                        ],
+                        
+            ),
+          ),
+
+          bottomNavigationBar: BottomAppBar(
+       
+       child:  Padding(
+       padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 13),
          child: GestureDetector(
-                 onTap: (){
-              setState(() {
-                
-                Navigator.push(context, MaterialPageRoute( builder: (BuildContext context) => Billdetails()
-                        ),
-                        );
-              });
+            onTap: (){
+         setState(() {
+           
+           Navigator.push(context, MaterialPageRoute( builder: (BuildContext context) => Billdetails()
+               ),
+               );
+         });
 
             },
-                            child: Container(
-                  width: double.infinity,
-                   decoration: BoxDecoration(
-                  color: Color(0xFFF6BF0B),
-                  borderRadius: BorderRadius.circular(5)
+                   child: Container(
+         width: double.infinity,
+         height: 70,
+          decoration: BoxDecoration(
+         color: Color(0xFFF6BF0B),
+         borderRadius: BorderRadius.circular(5)
           ),
           child: Center(
-                  child: Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Text('تأكيد ',
-                    style: TextStyle(
-          fontSize: 15,
+         child: Padding(
+           padding: const EdgeInsets.all(20),
+           child: Text('تأكيد ',
+           style: TextStyle(
+          fontSize: 25,
           fontFamily: 'GESSBOLD',
           color : Colors.black
-                    ),),
-                  ),
+           ),),
+         ),
             ),
 
-                ),
-              ),
+           ),
+         ),
        ),
-                      ],
-                      
-          ),
+     ),
     );
   }
 }

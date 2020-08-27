@@ -19,7 +19,7 @@ class _EndorderState extends State<Endorder> {
 
        appBar: AppBar(
         title: Image(
-          image: AssetImage('images/logo.png'),
+          image: AssetImage('images/feederlogo.png'),
         ),
        ),
           body: CustomScrollView(
@@ -38,7 +38,7 @@ class _EndorderState extends State<Endorder> {
           TextStyle(
             fontSize: 30,
             fontFamily: 'GESSLIGHT',
-            color: Colors.white
+            color: Colors.black
           ),)
         ],
       ),
@@ -69,47 +69,48 @@ class _EndorderState extends State<Endorder> {
               .toList(),
         ),
       ),
-      SliverPadding(padding: EdgeInsets.all(0),
-      sliver: SliverList(delegate: SliverChildListDelegate(
-        [
-           Padding(
-            padding: const EdgeInsets.all(15),
-            child: GestureDetector(
-               onTap: (){
-            setState(() {
-              
-              Navigator.push(context, MaterialPageRoute( builder: (BuildContext context) => Delvdetails()
-                      ),
-                      );
-            });
-
-          },
-                          child: Container(
-                width: double.infinity,
-                 decoration: BoxDecoration(
-                color: Color(0xFFF6BF0B),
-                borderRadius: BorderRadius.circular(5)
-        ),
-        child: Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Text('تأكيد ',
-                  style: TextStyle(
-        fontSize: 15,
-        fontFamily: 'GESSBOLD',
-        color : Colors.black
-                  ),),
-                ),
-          ),
-
-              ),
-            ),
-          ),
-        ]
-      )),
-      )
+      
         ],
       ),
+
+     
+     bottomNavigationBar: BottomAppBar(
+       
+       child:  Padding(
+       padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 13),
+         child: GestureDetector(
+            onTap: (){
+         setState(() {
+           
+           Navigator.push(context, MaterialPageRoute( builder: (BuildContext context) => Delvdetails()
+               ),
+               );
+         });
+
+            },
+                   child: Container(
+         width: double.infinity,
+         height: 70,
+          decoration: BoxDecoration(
+         color: Color(0xFFF6BF0B),
+         borderRadius: BorderRadius.circular(5)
+          ),
+          child: Center(
+         child: Padding(
+           padding: const EdgeInsets.all(20),
+           child: Text('تأكيد ',
+           style: TextStyle(
+          fontSize: 25,
+          fontFamily: 'GESSBOLD',
+          color : Colors.black
+           ),),
+         ),
+            ),
+
+           ),
+         ),
+       ),
+     ),
     );
   }
 }

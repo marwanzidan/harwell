@@ -23,9 +23,12 @@ class _MainPageState extends State<MainPage> {
           sliver: SliverList(
             delegate: SliverChildListDelegate(
               [
+              
                 Container(
+                  
                   width: MediaQuery.of(context).size.width,
                   child: CarouselSlider(
+                    
                     options: CarouselOptions(
                       scrollPhysics: ScrollPhysics(),
                       viewportFraction: 1,
