@@ -17,8 +17,8 @@ class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
 
   /// textfield Controller
-  final email = TextEditingController();
-  final password = TextEditingController();
+  final email = TextEditingController(text: "ehab@gmail.com");
+  final password = TextEditingController(text: "123456");
 
   bool isLoading = false;
 
@@ -180,7 +180,13 @@ class _LoginState extends State<Login> {
                           Padding(
                  padding: const EdgeInsets.symmetric(vertical: 15),
                 child: GestureDetector(
-                     onTap: login
+                     onTap: (){
+                      setState(() {
+                        Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Homestate()
+                            ),
+                            );
+                      });
+                    }
                      ,
            child: Container(
                       width: double.infinity,
