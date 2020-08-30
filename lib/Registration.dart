@@ -25,12 +25,10 @@ class _RegistrationState extends State<Registration> {
 
   bool isLoading = false;
 
-
-
   TextStyle textStyle = TextStyle(
         fontFamily: 'GESSLIGHT',
-          fontSize: 10,
-          color: Color(0xFFA8A8A8)
+          fontSize: 15,
+          color: Color(0xFF000000)
       );
 
   getInputDecoration(String hintText){
@@ -39,7 +37,7 @@ class _RegistrationState extends State<Registration> {
         hintStyle: TextStyle(
           fontFamily: 'GESSLIGHT',
           fontSize: 15,
-          color: Color(0xFF000000)
+          color: Color(0xFFA8A8A8)
         ),
         enabledBorder: UnderlineInputBorder(
         borderSide: BorderSide(

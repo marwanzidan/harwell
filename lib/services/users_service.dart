@@ -31,4 +31,30 @@ class UserService{
 
   }
 
+
+  /// login function
+  login({String email,String password}) async {
+     
+     String url = "$apiUrl/login"; 
+
+      var response = await http.post(
+      url,
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },body: jsonEncode(<String, String>{
+        'email': email,
+        'password': password,
+      }),
+    );
+
+      var responseBody = json.decode(response.body);
+      print(responseBody);
+
+      if(response.statusCode == 200){
+          return User(responseBody["user"]["id"].toString(), responseBody["user"]["name"],
+          responseBody["user"]["email"],responseBody["user"]["phone"], responseBody["access_token"],);
+      }
+
+    }
+
 }
