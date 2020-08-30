@@ -54,12 +54,13 @@ List cart =[
 ];
 
 List photoGalleryprop = [
-  {'imgUrl': 'images/propimg.png'},
+{'imgUrl': 'images/propimg.png'},
 {'imgUrl': 'images/propimg.png'},
 {'imgUrl': 'images/propimg.png'},
 {'imgUrl': 'images/propimg.png'},
 {'imgUrl': 'images/propimg.png'},
 ];
+
 List selectedsize = [
   {
     'size': 'كبير',
