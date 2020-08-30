@@ -1,4 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:harwel1/mainpage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import 'main.dart';
+import 'models/user.dart';
+import 'services/users_service.dart';
 
 class Registration extends StatefulWidget {
   @override
@@ -16,16 +23,9 @@ class _RegistrationState extends State<Registration> {
   final password = TextEditingController();
   final phone = TextEditingController();
 
-  // run this function when user click on register buttton
-  createUser(){
-    if (_formKey.currentState.validate()) {
-      print(name.text);
-      print(email.text);
-      print(password.text);
-      print(phone.text);
+  bool isLoading = false;
 
-    }
-  }
+
 
   TextStyle textStyle = TextStyle(
         fontFamily: 'GESSLIGHT',
@@ -39,7 +39,7 @@ class _RegistrationState extends State<Registration> {
         hintStyle: TextStyle(
           fontFamily: 'GESSLIGHT',
           fontSize: 15,
-          color: Color(0xFFA8A8A8)
+          color: Color(0xFF000000)
         ),
         enabledBorder: UnderlineInputBorder(
         borderSide: BorderSide(
@@ -52,6 +52,32 @@ class _RegistrationState extends State<Registration> {
 
   @override
   Widget build(BuildContext context) {
+
+  // run this function when user click on register buttton
+  createUser() async{
+
+    setState(() {
+      isLoading = true;
+    });
+
+    if (_formKey.currentState.validate()) {
+      User newUser = await UserService().register(name: name.text,email: email.text,password: password.text,phone: phone.text);
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setString('access_token', newUser.access_token);
+      prefs.setString('name', newUser.name);
+      prefs.setString('email', newUser.email);
+      prefs.setString('id', newUser.id);
+      prefs.setString('phone', newUser.phone);
+    }
+
+    Navigator.pushReplacement(
+    context, MaterialPageRoute(builder: (BuildContext context) => Homestate()));
+
+    setState(() {
+      isLoading = false;
+    });
+  }
+
      return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -68,7 +94,7 @@ class _RegistrationState extends State<Registration> {
                 )),
                 Align(
                   alignment: Alignment.centerRight,
-                  child: Text('تسجيل الدخول',
+                  child: Text('التسجيل',
                   style: TextStyle(
                     color:Colors.black,
                     fontSize: 25,
@@ -95,6 +121,7 @@ class _RegistrationState extends State<Registration> {
 
 
                 TextFormField(
+                  obscureText: true,
                   controller: password,
                   validator: (String value) {
                     return null;
@@ -147,7 +174,10 @@ class _RegistrationState extends State<Registration> {
                 ),
               ),
 
-            InkWell(
+            isLoading ? SpinKitRotatingCircle(
+                  color: Colors.black,
+                  size: 50.0,
+                ) : InkWell(
                 onTap: createUser,
                 child: Padding(
                 padding: const EdgeInsets.symmetric(vertical : 15),
@@ -160,7 +190,7 @@ class _RegistrationState extends State<Registration> {
                 child: Center(
                     child: Padding(
                       padding: const EdgeInsets.all(13),
-                      child: Text('تسجيل الدخول',
+                      child: Text('تسجيل',
                       style: TextStyle(
                         fontSize: 15,
                         fontFamily: 'GESSBOLD',
