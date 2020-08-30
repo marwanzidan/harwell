@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:harwel1/models/category.dart';
+import 'package:harwel1/services/category_service.dart';
 import 'package:harwel1/widgets/mainpageitem.dart';
+
+
 
 import 'main.dart';
 
@@ -20,25 +24,24 @@ class _CategoriesState extends State<Categories> {
     });
   }
 
-  final List<dynamic>  categoriesList = [
-    {
-      "name" : "باستا",
-      "id" : "abc123"
-    },
-    {
-      "name" : "بيتزا",
-      "id" : "abc12123"
-    },
-    {
-      "name" : "اضافات",
-      "id" : "abc12dd3"
-    },
-      {
-      "name" : "مشروبات",
-      "id" : "abc12dc3"
-    },
-    
-  ];
+  getCategories() async {
+    var categories = await CategoryService().getListOfCategories();
+    setState(() {
+      categoriesList = categories;
+    });
+  }
+
+ 
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getCategories();
+  }
+
+  List<Category> categoriesList;
+
 
   @override
   Widget build(BuildContext context) {
@@ -56,15 +59,13 @@ class _CategoriesState extends State<Categories> {
       [
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Row(
-            
+          child:  categoriesList == null ? Text("جاري التحميل") : Row(
             children: [
-             
-              ... categoriesList.map((categoryItem) => Expanded(
+              ...categoriesList.map((categoryItem) => Expanded(
                               child: Categoriesbutton(
-                  categoryItem["name"],
-                  categoryItem["id"] == selectedCategoryId,
-                  categoryItem["id"],
+                  categoryItem.arabic_title,
+                  categoryItem.id == selectedCategoryId,
+                  categoryItem.id,
                   selectCategoryHandler
                   ),
               ) ).toList(),

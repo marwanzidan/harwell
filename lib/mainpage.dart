@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:harwel1/main.dart';
 import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:harwel1/models/products.dart';
 import 'package:harwel1/widgets/mainpageitem.dart';
+import 'package:harwel1/services/product_service.dart';
 
 
 class MainPage extends StatefulWidget {
@@ -14,7 +16,20 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   int _current = 0;
+   List<Product> prodcustList;
+    getProducts() async {
+    var products = await Productservice().getListOfproducts();
+    setState(() {
+       prodcustList= products;
+    });
+  }
+   
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getProducts();
+  }
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     print(width == 500);
@@ -27,7 +42,7 @@ class _MainPageState extends State<MainPage> {
               [
                 // SizedBox(height: 20,),
                 Container(
-                  height: 350,
+                  height: 280,
                   child: CarouselSlider(
                     
                     options: CarouselOptions(
@@ -97,14 +112,12 @@ class _MainPageState extends State<MainPage> {
             childAspectRatio: width > 700 ? 0.7  : 1 ,
             crossAxisSpacing: 9,
             mainAxisSpacing: 9,
-            children: products
-                .map(
-                  (e) => MainPageItem(
-                    name: e['name'],
-                    image: e['imgUrl'],
-                    shortDescription: e['shortDescription'],
-                    price: e['price'],
-                    handler: widget.selectItemHandler
+            children: prodcustList.map(
+                  (productitem) => MainPageItem(
+                    name: productitem.arabic_title,
+                    price : productitem.price.toString(),
+                    shortDescription: productitem.arabic_description,
+                    image: "https://hips.hearstapps.com/delish/assets/17/36/1504715566-delish-fettuccine-alfredo.jpg",
                   ),
                 )
                 .toList(),

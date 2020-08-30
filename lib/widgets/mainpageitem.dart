@@ -77,7 +77,7 @@ class _MainPageItemState extends State<MainPageItem> {
                     child: Align(
                       alignment: Alignment.topRight,
                                           child: Image(
-                        image: AssetImage(widget.image),
+                        image: NetworkImage(widget.image),
                       ),
                     ),
                   ),

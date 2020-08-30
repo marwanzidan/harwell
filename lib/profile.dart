@@ -31,62 +31,83 @@ class _ProfileState extends State<Profile> {
                    },
                    child: Topprofileicons( FontAwesomeIcons.cubes,'طلباتي')),
                ),
-                 Expanded(child: Topprofileicons( FontAwesomeIcons.solidHeart,'قائمة الامنيات')),
-              Expanded(child: Topprofileicons( FontAwesomeIcons.user,'الاعدادات')),
+              //    Expanded(child: Topprofileicons( FontAwesomeIcons.solidHeart,'قائمة الامنيات')),
+              // Expanded(child: Topprofileicons( FontAwesomeIcons.user,'الاعدادات')),
             
              
             ],
           ),
         ),
-        Align(
-          alignment: Alignment.centerRight,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text('روابط اخري',
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text('وصف المطعم',
             style : TextStyle(
-              fontFamily: 'GESSMED',
-              fontSize: 20,
-              color: Colors.black
-            )),
+                  fontFamily: 'GESSMED',
+                  fontSize: 20,
+                  color: Colors.black
+                )),
+        ),
+
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text('هذا المطعم يقوم بتقديم جميع انواع البيتزا والفطائر والمشروبات ',
+          style : TextStyle(
+                fontFamily: 'GESSLIGHT',
+                fontSize: 15,
+                color: Colors.black
+              ),
           ),
         ),
 
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Otherlinks('عن هرول'),
-        ),
+      //   Align(
+      //     alignment: Alignment.centerRight,
+      //     child: Padding(
+      //       padding: const EdgeInsets.all(8.0),
+      //       child: Text('روابط اخري',
+      //       style : TextStyle(
+      //         fontFamily: 'GESSMED',
+      //         fontSize: 20,
+      //         color: Colors.black
+      //       )),
+      //     ),
+      //   ),
 
-       Divider(
-          color: Color(0xFFF0F0F0),
-          thickness: 2,
-        ),
+      //   Padding(
+      //     padding: const EdgeInsets.all(8.0),
+      //     child: Otherlinks('عن هرول'),
+      //   ),
 
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Otherlinks('الشروط والاحكام'),
-        ),
-         Divider(
-          color: Color(0xFFF0F0F0),
-          thickness: 2,
-        ),
+      //  Divider(
+      //     color: Color(0xFFF0F0F0),
+      //     thickness: 2,
+      //   ),
 
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Otherlinks('سياسة الخصوصية والاستبدال'),
-        ),
-        Divider(
-          color: Color(0xFFF0F0F0),
-          thickness: 2,
-        ),
+      //   Padding(
+      //     padding: const EdgeInsets.all(8.0),
+      //     child: Otherlinks('الشروط والاحكام'),
+      //   ),
+      //    Divider(
+      //     color: Color(0xFFF0F0F0),
+      //     thickness: 2,
+      //   ),
 
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Otherlinks('الأسئلة المكررة'),
-        ),
-        Divider(
-          color: Color(0xFFF0F0F0),
-          thickness: 2,
-        ),
+      //   Padding(
+      //     padding: const EdgeInsets.all(8.0),
+      //     child: Otherlinks('سياسة الخصوصية والاستبدال'),
+      //   ),
+      //   Divider(
+      //     color: Color(0xFFF0F0F0),
+      //     thickness: 2,
+      //   ),
+
+      //   Padding(
+      //     padding: const EdgeInsets.all(8.0),
+      //     child: Otherlinks('الأسئلة المكررة'),
+      //   ),
+      //   Divider(
+      //     color: Color(0xFFF0F0F0),
+      //     thickness: 2,
+      //   ),
         Padding(
               padding: const EdgeInsets.only(top: 20,left: 140,right: 140),
               child: Container(
