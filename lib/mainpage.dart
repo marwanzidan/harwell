@@ -19,6 +19,7 @@ class _MainPageState extends State<MainPage> {
    List<Product> prodcustList;
     getProducts() async {
     var products = await Productservice().getListOfproducts();
+    await Productservice().getProductDetails("4");
     setState(() {
        prodcustList= products;
     });

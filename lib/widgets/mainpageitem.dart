@@ -26,7 +26,7 @@ class _MainPageItemState extends State<MainPageItem> {
     return GestureDetector(
       onTap: (){
         setState(() {
-          Navigator.push(context, MaterialPageRoute( builder: (BuildContext context) => Props()
+          Navigator.push(context, MaterialPageRoute( builder: (BuildContext context) => Props("4")
                       ),
                       );
            
