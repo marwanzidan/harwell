@@ -17,8 +17,8 @@ class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
 
   /// textfield Controller
-  final email = TextEditingController(text: "ehab@gmail.com");
-  final password = TextEditingController(text: "123456");
+  final email = TextEditingController();
+  final password = TextEditingController();
 
   bool isLoading = false;
 
