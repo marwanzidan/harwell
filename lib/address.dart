@@ -1,14 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:harwel1/main.dart';
 import 'package:harwel1/paybill.dart';
+import 'package:harwel1/services/Address_service.dart';
 
-class Address extends StatefulWidget {
+import './models/Address.dart';
+import 'main.dart';
+
+
+class Address1 extends StatefulWidget {
   @override
-  _AddressState createState() => _AddressState();
+  _Address1State createState() => _Address1State();
 }
 
-class _AddressState extends State<Address> {
+class _Address1State extends State<Address1> {
+   List<Address> addresslist;
+getaddress() async {
+    var address = await Addressservice().getListOfaddress();
+    setState(() {
+      addresslist = address;
+    });
+  }
+
+ 
+
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getaddress();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
        appBar: AppBar(
@@ -59,7 +80,8 @@ class _AddressState extends State<Address> {
                             
                             Column(
                   
-                  children : address.map((x) => 
+                  children : addresslist == null ? [Text("جاري التحميل")] :
+                   addresslist.map((x) => 
                   Container(
                     width: double.infinity,
                     decoration: BoxDecoration(
@@ -77,9 +99,13 @@ class _AddressState extends State<Address> {
                           padding: const EdgeInsets.all(17.0),
                           child: Column(
                             children: [
-                               Addresstxt(x['street']),
-                       Addresstxt(x['building no']),
-                          Addresstxt(x['app no'])
+                              Addresstxt(x.address),
+                              Addresstxt(x.street_name),
+                              Addresstxt(x.building_number),
+                              Addresstxt(x.apartement_number),
+                              Addresstxt(x.notes),
+                              Addresstxt(x.region_id)
+                            
                             ],
 
                           ),

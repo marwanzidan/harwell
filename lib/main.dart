@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:harwel1/Adminlogin.dart';
+import 'package:harwel1/adminorders.dart';
 import 'package:harwel1/categories.dart';
-import 'package:harwel1/deliverydetails.dart';
 import 'package:harwel1/endingorder.dart';
-
 import 'package:harwel1/itemprop.dart';
 import 'package:ff_navigation_bar/ff_navigation_bar.dart';
 import 'package:harwel1/mainpage.dart';
-import 'package:harwel1/myorder.dart';
 import 'package:harwel1/profile.dart';
 import 'package:harwel1/login.dart';
-import 'package:harwel1/props.dart';
 import 'package:harwel1/search.dart';
+import 'login.dart';
+import 'login.dart';
 
 
 void main() {
@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
           child: child,
         );
       },
-      home: Login(),
+      home: Homestate(),
     );
   }
 }
@@ -106,7 +106,7 @@ List orders= [
 ];
 
 
-List address = [
+List addresshardcoded = [
 
   {
     'street' : 'شارع الملك خالد',

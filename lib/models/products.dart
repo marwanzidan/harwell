@@ -23,7 +23,7 @@ class Product {
     this.img_url = json["img_url"];
     this.category_id =json["category_id"].toString();
     this.main_product_id = json["main_product_id"].toString();
-    this.price =json["price"];
+    this.price =json["price"].toDouble();
    }
 
 

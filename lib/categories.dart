@@ -8,6 +8,7 @@ import 'package:harwel1/widgets/mainpageitem.dart';
 import 'main.dart';
 
 
+
 class Categories extends StatefulWidget {
   
   @override
@@ -54,32 +55,41 @@ class _CategoriesState extends State<Categories> {
         
     SliverPadding(
       padding: EdgeInsets.all(0),
-      sliver: SliverList(
-    delegate: SliverChildListDelegate(
-      [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child:  categoriesList == null ? Text("جاري التحميل") : Row(
-            children: [
-              ...categoriesList.map((categoryItem) => Expanded(
-                              child: Categoriesbutton(
-                  categoryItem.arabic_title,
-                  categoryItem.id == selectedCategoryId,
-                  categoryItem.id,
-                  selectCategoryHandler
-                  ),
-              ) ).toList(),
-              
-         
-            ],
-          ),
-        ),
+      sliver: SliverToBoxAdapter(
+    //   // SliverList(
+    // delegate: SliverChildListDelegate(
+    //   [
+       child : Container(
+         height: 70,
+         child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child:  categoriesList == null ? Text("جاري التحميل") : ListView(
+              scrollDirection: Axis.horizontal,
+                       
+                          
+                
+                
+                children: [
+                  ...categoriesList.map((categoryItem) => Categoriesbutton(
+                      categoryItem.arabic_title,
+                      categoryItem.id == selectedCategoryId,
+                      categoryItem.id,
+                      selectCategoryHandler
+                      ) ).toList(),
+                  
+           
+                ],
+                
+              ),
+            ),
+       ),
         
-      ],
+        
+      // ],
     ),
 ),
       
-    ),
+    
     SliverPadding(
       padding: EdgeInsets.all(12),
       sliver: SliverGrid.count(

@@ -88,7 +88,7 @@ class _DelvdetailsState extends State<Delvdetails> {
             onTap: (){
          setState(() {
            
-           Navigator.push(context, MaterialPageRoute( builder: (BuildContext context) => Address()
+           Navigator.push(context, MaterialPageRoute( builder: (BuildContext context) => Address1()
                ),
                );
          });

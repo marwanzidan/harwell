@@ -3,6 +3,10 @@ import 'package:harwel1/main.dart';
 
 import 'package:harwel1/widgets/mainpageitem.dart';
 
+import 'models/products.dart';
+import 'services/product_service.dart';
+
+
 
 class Searchscreen extends StatefulWidget {
    final selectItemHandler;
@@ -12,8 +16,24 @@ class Searchscreen extends StatefulWidget {
 }
 
 class _SearchscreenState extends State<Searchscreen> {
+ 
   
+  TextEditingController textController = TextEditingController();
+  List<Product> prodcustList;
+    getProducts() async {
+    var products = await Productservice().getListOfproducts();
+    setState(() {
+       prodcustList= products;
+    });
+  }
+   
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getProducts();
+  }
+ 
   Widget build(BuildContext context) {
     return CustomScrollView(
 
@@ -28,6 +48,13 @@ class _SearchscreenState extends State<Searchscreen> {
     delegate: SliverChildListDelegate(
       [
         TextField(
+          onChanged: (String value){
+            setState(() {
+              textController ==value;
+            });
+            
+          },
+          controller: textController,
           style: TextStyle(
             fontFamily: 'GESSLIGHT',
               fontSize: 10,
@@ -74,17 +101,16 @@ class _SearchscreenState extends State<Searchscreen> {
         childAspectRatio: (3 / 4),
         crossAxisSpacing: 9,
         mainAxisSpacing: 9,
-        children: products
+        children: prodcustList == null ? [Text("جاري التحميل")] :prodcustList
             .map(
               (e) => MainPageItem(
-                name: e['name'],
-                image: e['imgUrl'],
-                shortDescription: e['shortDescription'],
-                price: e['price'],
-                 handler: widget.selectItemHandler
+                name: e.english_title,
+                    price : e.price.toString(),
+                    shortDescription: e.arabic_description,
+                    image: "https://hips.hearstapps.com/delish/assets/17/36/1504715566-delish-fettuccine-alfredo.jpg",
               ),
             )
-            .toList(),
+           . toList().where((element) => element.name.contains(textController.text)).toList(),
       ),
     ),
       ],

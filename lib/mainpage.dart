@@ -112,7 +112,7 @@ class _MainPageState extends State<MainPage> {
             childAspectRatio: width > 700 ? 0.7  : 1 ,
             crossAxisSpacing: 9,
             mainAxisSpacing: 9,
-            children: prodcustList.map(
+            children: prodcustList == null ? [Text("جاري التحميل")] : prodcustList.map(
                   (productitem) => MainPageItem(
                     name: productitem.arabic_title,
                     price : productitem.price.toString(),
