@@ -307,27 +307,28 @@ class Chossing extends StatelessWidget {
   final String sizeno;
   final bool sel;
 
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
-        decoration: BoxDecoration(
-            color: sel ? Color(0xFFFDBA52) : Color(0xFFF5F2EE),
-            borderRadius: BorderRadius.circular(5)),
-        child: Center(
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: 8,
-            ),
-            child: Text(
-              sizeno,
-              style: TextStyle(
-                  fontFamily: 'LATOBLACK', fontSize: 20, color: Colors.black),
-            ),
+      decoration: BoxDecoration(
+          color: sel ? Color(0xFFFDBA52) : Color(0xFFF5F2EE),
+          borderRadius: BorderRadius.circular(5)),
+      child: Center(
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: 8,
+          ),
+          child: Text(
+            sizeno,
+            style: TextStyle(
+                fontFamily: 'LATOBLACK', fontSize: 20, color: Colors.black),
           ),
         ),
       ),
+        ),
     );
     
   }

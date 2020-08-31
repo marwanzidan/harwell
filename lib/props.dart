@@ -2,14 +2,37 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:harwel1/itemprop.dart';
 import 'package:harwel1/main.dart';
+import 'package:harwel1/models/products.dart';
+
+import './services/product_service.dart';
+
 
 class Props extends StatefulWidget {
+  String id;
+  Props(this.id);
+
   @override
   _PropsState createState() => _PropsState();
 }
 
 class _PropsState extends State<Props> {
   int _current = 0;
+  Product product;
+
+  getProductDetails() async {
+    var tempProduct = await Productservice().getProductDetails(widget.id);
+    setState(() {
+      product = tempProduct;
+    });
+    print(product);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getProductDetails();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,9 +43,7 @@ class _PropsState extends State<Props> {
           slivers:<Widget> [
             SliverPadding(padding: EdgeInsets.all(0),
             sliver: SliverList(delegate: SliverChildListDelegate(
-              [
-                
-                                Container(
+              [ product.images.length == 0 ? SizedBox() :  Container(
                                   height: 350,
                                   child: CarouselSlider(
                                     options: CarouselOptions(
@@ -42,7 +63,7 @@ class _PropsState extends State<Props> {
                                         })
                                       },
                                     ),
-                                    items: photoGalleryprop.map((i) {
+                                    items: product.images.map((imgUrl) {
                                       return Builder(
                                         builder: (BuildContext context) {
                                           return Container(
@@ -50,8 +71,8 @@ class _PropsState extends State<Props> {
                                             child: ClipRRect(
                                               borderRadius:
                                                   BorderRadius.all(Radius.circular(12)),
-                                              child: Image.asset(
-                                                i['imgUrl'],
+                                              child: Image.network(
+                                                imgUrl,
                                                 fit: BoxFit.cover,
                                               ),
                                             ),
@@ -67,13 +88,13 @@ class _PropsState extends State<Props> {
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: photoGalleryprop.map((url) {
+                        children: product.images.map((url) {
                           int index = photoGalleryprop.indexOf(url);
                           return Container(
                             width: 12,
                             height: 12,
                             margin:
-                                EdgeInsets.only(top: 9.0, bottom: 9.0, left: 9),
+                            EdgeInsets.only(top: 9.0, bottom: 9.0, left: 9),
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               color: _current == index
@@ -102,7 +123,7 @@ class _PropsState extends State<Props> {
                            Padding(
                             padding: const EdgeInsets.all(25),
                             child: Text(
-                              ' بيتزا سوبر سوبريم',
+                              product.arabic_title,
                               style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 25,
@@ -116,8 +137,6 @@ class _PropsState extends State<Props> {
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Row(
-                                
-                               
                                 crossAxisAlignment: CrossAxisAlignment.baseline,
                                 textBaseline: TextBaseline.alphabetic,
                                 children: [
@@ -132,7 +151,7 @@ class _PropsState extends State<Props> {
                                   Padding(
                                     padding: const EdgeInsets.all(2),
                                     child: Text(
-                                      '60',
+                                      product.price.toString(),
                                       style: TextStyle(
                                           fontFamily: 'LATOBLACK',
                                           fontSize: 20,
@@ -151,7 +170,7 @@ class _PropsState extends State<Props> {
                         padding: const EdgeInsets.all(8.0),
                         child: Center(
                           child: Text(
-                            'التفاصيل ',
+                            product.arabic_description,
                             style: TextStyle(
                                 color: Color(0XFFC6B2B2),
                                 fontFamily: 'GESSLIGHT',
@@ -165,7 +184,7 @@ class _PropsState extends State<Props> {
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
-                              'اختر الحجم',
+                              product.properties[0].arabic_title,
                               style: TextStyle(
                                   fontSize: 15,
                                   fontFamily: 'GESSBOLD',
@@ -178,26 +197,22 @@ class _PropsState extends State<Props> {
               ]
               
             ),),),
+
             SliverGrid.count(
-
-               crossAxisCount: 4,
-                            childAspectRatio: 1.8,
-                            children: selectedsize
-                                .map((x) => Chossing(x['size'], x['selected']))
-                                .toList()
+              crossAxisCount: 4,
+              childAspectRatio: 1.8,
+              children: product.propertiesItems.map((propertiesItem) => GestureDetector(onTap: (){
+                
+                 Navigator.push(context, MaterialPageRoute( builder: (BuildContext context) => Props(propertiesItem.product_id )),);
+              },child: Chossing(propertiesItem.arabic_title, propertiesItem.product_id == product.id),))
+                  .toList()
             ),
-             
-                      SliverPadding(padding: EdgeInsets.all(0),
-                      sliver: SliverList(delegate: SliverChildListDelegate(
-                        [
-                           
-                      SizedBox(
-                        height: 30,
-
-                      ),
-                        ]
-                      )),
-                      ),
+            SliverPadding(padding: EdgeInsets.all(0),
+            sliver: SliverList(delegate: SliverChildListDelegate([
+                SizedBox(height: 30,),
+            ]
+            )),
+            ),
 
                      
 

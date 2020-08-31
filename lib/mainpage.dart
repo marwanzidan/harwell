@@ -19,6 +19,7 @@ class _MainPageState extends State<MainPage> {
    List<Product> prodcustList;
     getProducts() async {
     var products = await Productservice().getListOfproducts();
+    await Productservice().getProductDetails("4");
     setState(() {
        prodcustList= products;
     });
@@ -112,7 +113,7 @@ class _MainPageState extends State<MainPage> {
             childAspectRatio: width > 700 ? 0.7  : 1 ,
             crossAxisSpacing: 9,
             mainAxisSpacing: 9,
-            children: prodcustList.map(
+            children: prodcustList == null ? [Text("جاري التحميل")] : prodcustList.map(
                   (productitem) => MainPageItem(
                     name: productitem.arabic_title,
                     price : productitem.price.toString(),
