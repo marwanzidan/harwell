@@ -64,7 +64,7 @@ class Productservice{
         responseBody["product"]["img_url"],
         responseBody["product"]["category_id"].toString(),
         responseBody["product"]["main_product_id"].toString(),
-        responseBody["product"]["price"],
+        responseBody["product"]["price"].toDouble(),
         images,
         properties,
         propertiesItems,

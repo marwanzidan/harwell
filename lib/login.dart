@@ -156,7 +156,7 @@ class _LoginState extends State<Login> {
                 padding: const EdgeInsets.symmetric(vertical: 15),
                 child: GestureDetector(
                     onTap: login,
-                child: isLoading ? SpinKitRotatingCircle(
+                child: isLoading ? SpinKitWanderingCubes(
                     color: Colors.black,
                     size: 50.0,
                 ) : Container(
