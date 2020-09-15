@@ -1,82 +1,94 @@
 import 'package:flutter/material.dart';
 import 'package:harwel1/itemprop.dart';
 import 'package:harwel1/props.dart';
-bool clicked=true;
-buttonclick(){
+import 'package:harwel1/services/cartFunctions.dart';
+
+import '../endingorder.dart';
+
+bool clicked = true;
+buttonclick() {
   return clicked;
 }
 
-
 class MainPageItem extends StatefulWidget {
-  
-  final String image, name, shortDescription, price;
-   bool cancButton = false;
+  final String image, name, shortDescription, price, main_product_id, id;
+  bool cancButton = false;
   var handler;
-  MainPageItem({this.name, this.image, this.price, this.shortDescription,this.handler,this.cancButton = false});
+  MainPageItem(
+      {this.name,
+      this.id,
+      this.main_product_id,
+      this.image,
+      this.price,
+      this.shortDescription,
+      this.handler,
+      this.cancButton = false});
   @override
   _MainPageItemState createState() => _MainPageItemState();
 }
 
 class _MainPageItemState extends State<MainPageItem> {
-  
-  
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         setState(() {
-          Navigator.push(context, MaterialPageRoute( builder: (BuildContext context) => Props("4")
-                      ),
-                      );
-           
-
+          print(widget.id);
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (BuildContext context) => Props(widget.id)),
+          );
         });
       },
-          child: Stack(
+      child: Stack(
         children: [
           Container(
-            
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.all(
                 Radius.circular(10),
               ),
-              border: Border.all(
-                color: Colors.white
-              ),
-               boxShadow: [
-      BoxShadow(
-        color: Color(0xFF979595).withOpacity(0.2),
-        spreadRadius: 0.1,
-        blurRadius: 6,
-        offset: Offset(0, 3), // changes position of shadow
-      ),
-    ],
+              border: Border.all(color: Colors.white),
+              boxShadow: [
+                BoxShadow(
+                  color: Color(0xFF979595).withOpacity(0.2),
+                  spreadRadius: 0.1,
+                  blurRadius: 6,
+                  offset: Offset(0, 3), // changes position of shadow
+                ),
+              ],
             ),
-            
             child: Padding(
               padding: const EdgeInsets.all(9.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                 widget.cancButton ? Align(alignment: Alignment.topLeft,
-                    child: GestureDetector(
-                      onTap: (){
-                        setState(() {
-                          clicked = false;
-                          buttonclick();
-                         
-                        });
-                        
-                      },
-                      
-                      child: Icon(Icons.cancel,color: Colors.black,))) : SizedBox(),
+                  widget.cancButton
+                      ? Align(
+                          alignment: Alignment.topLeft,
+                          child: GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  endOrderState.setState(() {
+                                    clicked = false;
+                                    buttonclick();
+                                    removeFromCart(
+                                      removeOrder: widget.id,
+                                    );
+                                  });
+                                });
+                              },
+                              child: Icon(
+                                Icons.cancel,
+                                color: Colors.black,
+                              )))
+                      : SizedBox(),
                   Expanded(
                     flex: 1,
                     child: Align(
                       alignment: Alignment.topRight,
-                                          child: Image(
+                      child: Image(
                         image: NetworkImage(widget.image),
                       ),
                     ),
@@ -103,8 +115,6 @@ class _MainPageItemState extends State<MainPageItem> {
                             child: Divider(
                               color: Color(0xFF707070),
                               thickness: 1,
-                              
-
                             ),
                           ),
                           Align(
