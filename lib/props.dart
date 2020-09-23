@@ -5,7 +5,7 @@ import 'package:harwel1/itemprop.dart';
 import 'package:harwel1/main.dart';
 import 'package:harwel1/models/products.dart';
 import 'package:harwel1/services/cartFunctions.dart';
-
+import 'package:easy_localization/easy_localization.dart';
 import './services/product_service.dart';
 
 class Props extends StatefulWidget {
@@ -272,7 +272,7 @@ class _PropsState extends State<Props> {
                         child: Padding(
                           padding: const EdgeInsets.all(10),
                           child: Text(
-                            'اضافة للسلة ',
+                            'addToBasket'.tr().toString(),
                             style: TextStyle(
                                 fontSize: 25,
                                 fontFamily: 'GESSBOLD',

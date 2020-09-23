@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:harwel1/paybill.dart';
 import 'package:harwel1/services/Address_service.dart';
-
+import 'package:easy_localization/easy_localization.dart';
 import './models/Address.dart';
 
 class Address1 extends StatefulWidget {
@@ -43,18 +43,16 @@ class _Address1State extends State<Address1> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Align(
-                        alignment: Alignment.topRight,
-                        child: Text(
-                          'تفاصيل التوصيل',
-                          style: TextStyle(
-                              fontFamily: 'GESSLIGHT',
-                              fontSize: 30,
-                              color: Colors.black),
-                        ),
+                      child: Text(
+                        'deliveryDetails'.tr().toString(),
+                        style: TextStyle(
+                            fontFamily: 'GESSLIGHT',
+                            fontSize: 30,
+                            color: Colors.black),
                       ),
                     ),
                     Container(
@@ -69,14 +67,14 @@ class _Address1State extends State<Address1> {
                             child: Padding(
                               padding: const EdgeInsets.all(16.0),
                               child: Addresstxt(
-                                txt: 'اختر عنوان التوصيل',
+                                txt: 'chooseDeliveryAddress'.tr().toString(),
                                 type: '',
                               ),
                             ),
                           ),
                           Column(
                               children: addresslist == null
-                                  ? [Text("جاري التحميل")]
+                                  ? [Text('loading'.tr().toString())]
                                   : addresslist
                                       .map(
                                         (x) => GestureDetector(
@@ -112,31 +110,38 @@ class _Address1State extends State<Address1> {
                                                         children: [
                                                           Addresstxt(
                                                             txt: x.address,
-                                                            type: 'العنوان : ',
+                                                            type: 'address'
+                                                                .tr()
+                                                                .toString(),
                                                           ),
                                                           Addresstxt(
                                                             txt: x.street_name,
-                                                            type:
-                                                                'اسم الشارع : ',
+                                                            type: 'streetName'
+                                                                .tr()
+                                                                .toString(),
                                                           ),
                                                           Addresstxt(
                                                             txt: x
                                                                 .building_number,
                                                             type:
-                                                                'رقم المبنى : ',
+                                                                'buildingNumber'
+                                                                    .tr()
+                                                                    .toString(),
                                                           ),
                                                           Addresstxt(
                                                             txt: x
                                                                 .apartment_number,
-                                                            type:
-                                                                'رقم الشقة : ',
+                                                            type: 'aptNumber'
+                                                                .tr()
+                                                                .toString(),
                                                           ),
                                                           x.notes == null
                                                               ? Container()
                                                               : Addresstxt(
                                                                   txt: x.notes,
-                                                                  type:
-                                                                      'الملاحظات علي العنوان : ',
+                                                                  type: 'addressNotes'
+                                                                      .tr()
+                                                                      .toString(),
                                                                 ),
                                                           // Addresstxt(
                                                           //   txt: x.region_id,
@@ -199,7 +204,7 @@ class _Address1State extends State<Address1> {
                   child: Padding(
                     padding: const EdgeInsets.all(20),
                     child: Text(
-                      'تأكيد ',
+                      'confirm'.tr().toString(),
                       style: TextStyle(
                           fontSize: 25,
                           fontFamily: 'GESSBOLD',

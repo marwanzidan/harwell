@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:harwel1/models/category.dart';
 import 'package:harwel1/services/category_service.dart';
 import 'package:harwel1/widgets/mainpageitem.dart';
-
+import 'package:easy_localization/easy_localization.dart';
 import 'main.dart';
 
 class Categories extends StatefulWidget {
@@ -50,7 +50,7 @@ class _CategoriesState extends State<Categories> {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: categoriesList == null
-                    ? Text("جاري التحميل")
+                    ? Text('loading'.tr().toString())
                     : ListView(
                         scrollDirection: Axis.horizontal,
                         children: [

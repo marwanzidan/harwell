@@ -4,7 +4,7 @@ import 'package:harwel1/deliverydetails.dart';
 import 'package:harwel1/models/Address.dart';
 import 'package:harwel1/services/Address_service.dart';
 import 'package:harwel1/widgets/mainpageitem.dart';
-
+import 'package:easy_localization/easy_localization.dart';
 import 'main.dart';
 import 'main.dart';
 
@@ -50,7 +50,7 @@ class _EndorderState extends State<Endorder> {
               delegate: SliverChildListDelegate(
                 [
                   Text(
-                    'انهاء الطلب',
+                    'finishOrder'.tr().toString(),
                     style: TextStyle(
                         fontSize: 30,
                         fontFamily: 'GESSLIGHT',
@@ -120,7 +120,7 @@ class _EndorderState extends State<Endorder> {
                 child: Padding(
                   padding: const EdgeInsets.all(20),
                   child: Text(
-                    'تأكيد ',
+                    'confirm'.tr().toString(),
                     style: TextStyle(
                         fontSize: 25,
                         fontFamily: 'GESSBOLD',

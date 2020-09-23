@@ -3,7 +3,7 @@ import 'package:harwel1/address.dart';
 import 'package:harwel1/main.dart';
 import 'package:harwel1/services/Address_service.dart';
 import 'package:harwel1/services/consts.dart';
-
+import 'package:easy_localization/easy_localization.dart';
 class Delvdetails extends StatefulWidget {
   @override
   _DelvdetailsState createState() => _DelvdetailsState();
@@ -34,17 +34,15 @@ class _DelvdetailsState extends State<Delvdetails> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Align(
-                      alignment: Alignment.topRight,
-                      child: Text(
-                        'تفاصيل التوصيل',
-                        style: TextStyle(
-                            fontFamily: 'GESSLIGHT',
-                            fontSize: 30,
-                            color: Colors.black),
-                      ),
+                    Text(
+                      'deliveryDetails'.tr().toString(),
+                      style: TextStyle(
+                          fontFamily: 'GESSLIGHT',
+                          fontSize: 30,
+                          color: Colors.black),
                     ),
                     Container(
                       height: 460,
@@ -62,7 +60,7 @@ class _DelvdetailsState extends State<Delvdetails> {
                                 });
                               },
                               decoration: InputDecoration(
-                                  hintText: 'العنوان',
+                                  hintText: 'address'.tr().toString(),
                                   hintStyle: TextStyle(
                                       fontFamily: 'GESSLIGHT',
                                       fontSize: 10,
@@ -81,7 +79,7 @@ class _DelvdetailsState extends State<Delvdetails> {
                                 });
                               },
                               decoration: InputDecoration(
-                                  hintText: 'اسم الشارع',
+                                  hintText: 'streetName'.tr().toString(),
                                   hintStyle: TextStyle(
                                       fontFamily: 'GESSLIGHT',
                                       fontSize: 10,
@@ -100,7 +98,7 @@ class _DelvdetailsState extends State<Delvdetails> {
                                 });
                               },
                               decoration: InputDecoration(
-                                  hintText: 'رقم المبني',
+                                  hintText: 'buildingNumber'.tr().toString(),
                                   hintStyle: TextStyle(
                                       fontFamily: 'GESSLIGHT',
                                       fontSize: 10,
@@ -119,7 +117,7 @@ class _DelvdetailsState extends State<Delvdetails> {
                                 });
                               },
                               decoration: InputDecoration(
-                                  hintText: 'رقم الشقة',
+                                  hintText: 'aptNumber'.tr().toString(),
                                   hintStyle: TextStyle(
                                       fontFamily: 'GESSLIGHT',
                                       fontSize: 10,
@@ -138,7 +136,7 @@ class _DelvdetailsState extends State<Delvdetails> {
                                 });
                               },
                               decoration: InputDecoration(
-                                  hintText: 'ملاحظات علي العنوان',
+                                  hintText: 'addressNotes'.tr().toString(),
                                   hintStyle: TextStyle(
                                       fontFamily: 'GESSLIGHT',
                                       fontSize: 10,
@@ -188,7 +186,7 @@ class _DelvdetailsState extends State<Delvdetails> {
                   child: Padding(
                     padding: const EdgeInsets.all(20),
                     child: Text(
-                      'تأكيد ',
+                      'confirm'.tr().toString(),
                       style: TextStyle(
                           fontSize: 25,
                           fontFamily: 'GESSBOLD',

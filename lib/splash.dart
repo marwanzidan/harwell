@@ -13,18 +13,18 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   String token = '';
 
-  checkLogin() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    token = prefs.getString('access_token');
-    if (token == null) {
-      Navigator.pushReplacement(context,
-          MaterialPageRoute(builder: (BuildContext context) => Login()));
-    } else {
-      print(token);
-      Navigator.pushReplacement(context,
-          MaterialPageRoute(builder: (BuildContext context) => Homestate()));
-    }
-  }
+  // checkLogin() async {
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   token = prefs.getString('access_token');
+  //   if (token == null) {
+  //     Navigator.pushReplacement(context,
+  //         MaterialPageRoute(builder: (BuildContext context) => Login()));
+  //   } else {
+  //     print(token);
+  //     Navigator.pushReplacement(context,
+  //         MaterialPageRoute(builder: (BuildContext context) => Homestate()));
+  //   }
+  // }
 
   @override
   void initState() {
@@ -37,7 +37,10 @@ class _SplashScreenState extends State<SplashScreen> {
         () {
           if (_start < 1) {
             timer.cancel();
-            checkLogin();
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (BuildContext context) => Homestate()));
           } else {
             _start = _start - 1;
           }
@@ -53,7 +56,7 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Center(
           child: Padding(
         padding: const EdgeInsets.all(15.0),
-        child: Image(image: AssetImage('images/feederbiglogo.png')),
+        child: Image(image: AssetImage('images/splash_gif.gif')),
       )),
     ));
   }

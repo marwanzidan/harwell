@@ -1,10 +1,11 @@
 import 'dart:convert';
-
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:harwel1/address.dart';
 import 'package:harwel1/main.dart';
 import 'package:harwel1/models/paydetail.dart';
 import 'package:harwel1/orderdone.dart';
+import 'package:harwel1/orderwithoutLogin.dart';
 import 'package:harwel1/services/orders_service.dart';
 
 TextStyle st =
@@ -57,153 +58,161 @@ class _BilldetailsState extends State<Billdetails> {
             children: [
               SingleChildScrollView(
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Align(
-                        alignment: Alignment.topRight,
-                        child: Text(
-                          'تفاصيل التوصيل',
-                          style: TextStyle(
-                              fontFamily: 'GESSLIGHT',
-                              fontSize: 30,
-                              color: Colors.black),
-                        ),
+                      child: Text(
+                        'deliveryDetails'.tr().toString(),
+                        style: TextStyle(
+                            fontFamily: 'GESSLIGHT',
+                            fontSize: 30,
+                            color: Colors.black),
                       ),
                     ),
-                    Container(
-                      width: double.infinity,
-                      height: 460,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(11)),
-                      child: Column(
-                        children: [
-                          Align(
-                            alignment: Alignment.centerRight,
-                            child: Padding(
-                              padding: const EdgeInsets.all(16.0),
-                              child: Addresstxt(
-                                txt: 'الفاتورة',
-                                type: '',
-                              ),
+                    Column(
+                      children: [
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Addresstxt(
+                              txt: 'bill'.tr().toString(),
+                              type: '',
                             ),
                           ),
-                          Column(
-                              children: billdetails
-                                  .map(
-                                    (x) => Container(
-                                      width: double.infinity,
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              color: Color(0XFFEFD7D7))),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.all(17.0),
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Row(children: [
-                                                  Text(
-                                                    'المجموع  :  ',
-                                                    style: st,
-                                                  ),
-                                                  Text(
-                                                    x['total before'],
-                                                    style: st,
-                                                  )
-                                                ]),
-                                                Row(children: [
-                                                  Text(
-                                                    'خصم  :  ',
-                                                    style: st,
-                                                  ),
-                                                  Text(
-                                                    x['discount'],
-                                                    style: st,
-                                                  )
-                                                ]),
-                                                Row(children: [
-                                                  Text(
-                                                    'الشحن  :  ',
-                                                    style: st,
-                                                  ),
-                                                  Text(
-                                                    x['delivery'],
-                                                    style: st,
-                                                  )
-                                                ]),
-                                                Row(children: [
-                                                  Text(
-                                                    'الضريبة  :  ',
-                                                    style: st,
-                                                  ),
-                                                  Text(
-                                                    x['Tax'],
-                                                    style: st,
-                                                  )
-                                                ]),
-                                                Row(children: [
-                                                  Text(
-                                                    'الاجمالي  :  ',
-                                                    style: st,
-                                                  ),
-                                                  Text(
-                                                    x['total after'],
-                                                    style: st,
-                                                  )
-                                                ]),
-                                              ],
-                                            ),
+                        ),
+                        Column(
+                            children: billdetails
+                                .map(
+                                  (x) => Container(
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                        border: Border.all(
+                                            color: Color(0XFFEFD7D7))),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.all(17.0),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Row(children: [
+                                                Text(
+                                                  'total'.tr().toString() +
+                                                      'currency'
+                                                          .tr()
+                                                          .toString(),
+                                                  style: st,
+                                                ),
+                                                Text(
+                                                  x['total before'],
+                                                  style: st,
+                                                )
+                                              ]),
+                                              Row(children: [
+                                                Text(
+                                                  'discount'.tr().toString() +
+                                                      'currency'
+                                                          .tr()
+                                                          .toString(),
+                                                  style: st,
+                                                ),
+                                                Text(
+                                                  x['discount'],
+                                                  style: st,
+                                                )
+                                              ]),
+                                              Row(children: [
+                                                Text(
+                                                  'shipment'.tr().toString() +
+                                                      'currency'
+                                                          .tr()
+                                                          .toString(),
+                                                  style: st,
+                                                ),
+                                                Text(
+                                                  x['delivery'],
+                                                  style: st,
+                                                )
+                                              ]),
+                                              Row(children: [
+                                                Text(
+                                                  'tax'.tr().toString() +
+                                                      'currency'
+                                                          .tr()
+                                                          .toString(),
+                                                  style: st,
+                                                ),
+                                                Text(
+                                                  x['Tax'],
+                                                  style: st,
+                                                )
+                                              ]),
+                                              Row(children: [
+                                                Text(
+                                                  'finalTotal'
+                                                          .tr()
+                                                          .toString() +
+                                                      'currency'
+                                                          .tr()
+                                                          .toString(),
+                                                  style: st,
+                                                ),
+                                                Text(
+                                                  x['total after'],
+                                                  style: st,
+                                                )
+                                              ]),
+                                            ],
                                           ),
-                                          Icon(Icons.check_box,
-                                              color: Color(0xFFFDBA52))
-                                        ],
-                                      ),
+                                        ),
+                                        Icon(Icons.check_box,
+                                            color: Color(0xFFFDBA52))
+                                      ],
                                     ),
-                                  )
-                                  .toList()),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: TextField(
-                              decoration: InputDecoration(
-                                  hintText: 'الكود التجريبي',
-                                  hintStyle: TextStyle(
-                                      fontFamily: 'GESSLIGHT',
-                                      fontSize: 10,
-                                      color: Color(0xFF9C9696)),
-                                  enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: Color(0xFF9C9696)))),
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.topLeft,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    color: Color(0xFFFDBA52),
-                                    borderRadius: BorderRadius.circular(5)),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(
-                                    'تطبيق',
-                                    style: TextStyle(
-                                        fontFamily: 'GESSBOLD',
-                                        fontSize: 15,
-                                        color: Colors.black),
                                   ),
+                                )
+                                .toList()),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: TextField(
+                            decoration: InputDecoration(
+                                hintText: 'promoCode'.tr().toString(),
+                                hintStyle: TextStyle(
+                                    fontFamily: 'GESSLIGHT',
+                                    fontSize: 10,
+                                    color: Color(0xFF9C9696)),
+                                enabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: Color(0xFF9C9696)))),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.topLeft,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: Color(0xFFFDBA52),
+                                  borderRadius: BorderRadius.circular(5)),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  'apply'.tr().toString(),
+                                  style: TextStyle(
+                                      fontFamily: 'GESSBOLD',
+                                      fontSize: 15,
+                                      color: Colors.black),
                                 ),
                               ),
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -221,7 +230,7 @@ class _BilldetailsState extends State<Billdetails> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (BuildContext context) => Orderdone()),
+                      builder: (BuildContext context) => OrderWithoutLogin()),
                 );
               });
             },
@@ -235,7 +244,7 @@ class _BilldetailsState extends State<Billdetails> {
                 child: Padding(
                   padding: const EdgeInsets.all(20),
                   child: Text(
-                    'تأكيد ',
+                    'confirm'.tr().toString(),
                     style: TextStyle(
                         fontSize: 25,
                         fontFamily: 'GESSBOLD',

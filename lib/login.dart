@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:harwel1/Registration.dart';
 import 'package:harwel1/main.dart';
+import 'package:harwel1/orderwithoutLogin.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import './services/category_service.dart';
 import 'models/user.dart';
 import 'services/users_service.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -44,8 +46,8 @@ class _LoginState extends State<Login> {
           setState(() {
             isLoading = true;
           });
-          User newUser = await UserService()
-              .login(email: email.text, password: password.text,context: context);
+          User newUser = await UserService().login(
+              email: email.text, password: password.text, context: context);
           SharedPreferences prefs = await SharedPreferences.getInstance();
           if (newUser.access_token == null) {
             print(newUser.access_token);
@@ -83,11 +85,14 @@ class _LoginState extends State<Login> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Center(
-                      child: Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: Image(image: AssetImage('images/feederbiglogo.png')),
-                  )),
+                  Container(
+                    height: MediaQuery.of(context).size.height * 0.4,
+                    child: Center(
+                        child: Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Image(image: AssetImage('images/logo.jpg')),
+                    )),
+                  ),
                   Align(
                     alignment: Alignment.centerRight,
                     child: Text(
@@ -106,7 +111,7 @@ class _LoginState extends State<Login> {
                         return null;
                       },
                       style: textStyle,
-                      decoration: getInputDecoration("البريد الالكتروني"),
+                      decoration: getInputDecoration("email".tr().toString()),
                     ),
                   ),
                   Padding(
@@ -118,11 +123,12 @@ class _LoginState extends State<Login> {
                         return null;
                       },
                       style: textStyle,
-                      decoration: getInputDecoration("كلمة المرور"),
+                      decoration:
+                          getInputDecoration("password".tr().toString()),
                     ),
                   ),
                   Container(
-                    width: 150,
+                    width: MediaQuery.of(context).size.width * 0.4,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
                         color: Colors.black,
@@ -130,9 +136,10 @@ class _LoginState extends State<Login> {
                     child: Padding(
                       padding: const EdgeInsets.all(4.0),
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Text(
-                            'مدعوم بواسطة',
+                            'supportedBy'.tr().toString(),
                             style: TextStyle(
                                 color: Colors.white,
                                 fontFamily: 'GESSLIGHT',
@@ -144,7 +151,7 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 15),
+                    padding: const EdgeInsets.only(top: 15),
                     child: GestureDetector(
                       onTap: login,
                       child: isLoading
@@ -161,10 +168,10 @@ class _LoginState extends State<Login> {
                                 child: Padding(
                                   padding: const EdgeInsets.all(13),
                                   child: Text(
-                                    'تسجيل الدخول',
+                                    'signIn'.tr().toString(),
                                     style: TextStyle(
                                         fontSize: 15,
-                                        fontFamily: 'GESSBOLD',
+                                        fontFamily: 'GESSMED',
                                         color: Colors.black),
                                   ),
                                 ),
@@ -173,7 +180,7 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 15),
+                    padding: const EdgeInsets.only(top: 15),
                     child: GestureDetector(
                       onTap: () {
                         setState(() {
@@ -194,17 +201,69 @@ class _LoginState extends State<Login> {
                           child: Padding(
                             padding: const EdgeInsets.all(13),
                             child: Text(
-                              'التسجيل ',
+                              'signUp'.tr().toString(),
                               style: TextStyle(
-                                  fontSize: 15,
-                                  fontFamily: 'GESSBOLD',
-                                  color: Colors.black),
+                                fontSize: 15,
+                                color: Colors.black,
+                              ),
                             ),
                           ),
                         ),
                       ),
                     ),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 15),
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    OrderWithoutLogin()),
+                          );
+                        });
+                      },
+                      child: Container(
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                            color: Color(0xFFF6BF0B),
+                            borderRadius: BorderRadius.circular(5)),
+                        child: Center(
+                          child: Padding(
+                            padding: const EdgeInsets.all(13),
+                            child: Text(
+                              'orderNoLogin'.tr().toString(),
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      EasyLocalization.of(context).locale == Locale('ar', 'AR')
+                          ? EasyLocalization.of(context).locale =
+                              Locale('en', 'EN')
+                          : EasyLocalization.of(context).locale =
+                              Locale('ar', 'AR');
+                    },
+                    child: Center(
+                      child: Text(
+                        'changeLang'.tr().toString() + 'lang'.tr().toString(),
+                        style: TextStyle(
+                            fontFamily: EasyLocalization.of(context).locale ==
+                                    Locale('ar', 'AR')
+                                ? 'LATOBLACK'
+                                : 'GESSMED'),
+                      ),
+                    ),
+                  )
                 ],
               ),
             ),

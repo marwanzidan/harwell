@@ -5,6 +5,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:harwel1/models/products.dart';
 import 'package:harwel1/widgets/mainpageitem.dart';
 import 'package:harwel1/services/product_service.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class MainPage extends StatefulWidget {
   final selectItemHandler;
@@ -107,12 +108,22 @@ class _MainPageState extends State<MainPage> {
         SliverPadding(
           padding: EdgeInsets.all(12),
           sliver: SliverGrid.count(
-            crossAxisCount: width > 700 ? 4 : 2,
-            childAspectRatio: width > 700 ? 0.7 : 1,
+            crossAxisCount: prodcustList == null
+                ? 1
+                : width > 700
+                    ? 4
+                    : 2,
+            childAspectRatio: width > 700 ? 0.7 : 9/12,
             crossAxisSpacing: 9,
             mainAxisSpacing: 9,
             children: prodcustList == null
-                ? [Text("جاري التحميل")]
+                ? [
+                    Scaffold(
+                      body: Center(
+                          child: Container(
+                              child: Text('loading'.tr().toString()))),
+                    ),
+                  ]
                 : prodcustList
                     .map(
                       (productitem) => MainPageItem(

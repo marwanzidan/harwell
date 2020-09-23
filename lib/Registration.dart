@@ -3,7 +3,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:harwel1/login.dart';
 import 'package:harwel1/mainpage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:easy_localization/easy_localization.dart';
 import 'main.dart';
 import 'models/user.dart';
 import 'services/users_service.dart';
@@ -97,23 +97,29 @@ class _RegistrationState extends State<Registration> {
               child: Form(
                 key: _formKey,
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Center(
+                    Container(
+                      height: MediaQuery.of(context).size.height * 0.4,
+                      child: Center(
                         child: Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child:
-                          Image(image: AssetImage('images/feederbiglogo.png')),
-                    )),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: Text(
-                        'التسجيل',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 25,
-                            fontFamily: 'GESSMED'),
+                          padding: const EdgeInsets.all(15.0),
+                          child: Image(
+                            image: AssetImage(
+                              'images/logo.jpg',
+                            ),
+                            fit: BoxFit.contain,
+                          ),
+                        ),
                       ),
+                    ),
+                    Text(
+                      'signUpWord'.tr().toString(),
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 25,
+                          fontFamily: 'GESSMED'),
                     ),
                     TextFormField(
                       controller: name,
@@ -121,7 +127,7 @@ class _RegistrationState extends State<Registration> {
                         return null;
                       },
                       style: textStyle,
-                      decoration: getInputDecoration("الاسم"),
+                      decoration: getInputDecoration("name".tr().toString()),
                     ),
                     TextFormField(
                       controller: email,
@@ -129,7 +135,7 @@ class _RegistrationState extends State<Registration> {
                         return null;
                       },
                       style: textStyle,
-                      decoration: getInputDecoration("البريد الالكتروني"),
+                      decoration: getInputDecoration("email".tr().toString()),
                     ),
                     TextFormField(
                       obscureText: true,
@@ -138,7 +144,8 @@ class _RegistrationState extends State<Registration> {
                         return null;
                       },
                       style: textStyle,
-                      decoration: getInputDecoration("كلمة المرور"),
+                      decoration:
+                          getInputDecoration("password".tr().toString()),
                     ),
                     TextFormField(
                       controller: phone,
@@ -146,32 +153,30 @@ class _RegistrationState extends State<Registration> {
                         return null;
                       },
                       style: textStyle,
-                      decoration: getInputDecoration("رقم الموبايل"),
+                      decoration: getInputDecoration("phone".tr().toString()),
                     ),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 260, top: 20),
-                        child: Container(
-                          width: 150,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              color: Colors.black,
-                              border: Border.all(color: Colors.white)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(4.0),
-                            child: Row(
-                              children: [
-                                Text(
-                                  'مدعوم بواسطة',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontFamily: 'GESSLIGHT',
-                                      fontSize: 12),
-                                ),
-                                Image(image: AssetImage('images/osicon.png'))
-                              ],
-                            ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 16.0),
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.4,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            color: Colors.black,
+                            border: Border.all(color: Colors.white)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text(
+                                'supportedBy'.tr().toString(),
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontFamily: 'GESSLIGHT',
+                                    fontSize: 12),
+                              ),
+                              Image(image: AssetImage('images/osicon.png'))
+                            ],
                           ),
                         ),
                       ),
@@ -198,7 +203,7 @@ class _RegistrationState extends State<Registration> {
                                   child: Padding(
                                     padding: const EdgeInsets.all(13),
                                     child: Text(
-                                      'تسجيل',
+                                      'signUp'.tr().toString(),
                                       style: TextStyle(
                                           fontSize: 15,
                                           fontFamily: 'GESSBOLD',
