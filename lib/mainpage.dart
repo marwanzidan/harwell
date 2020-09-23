@@ -118,7 +118,7 @@ class _MainPageState extends State<MainPage> {
                     name: productitem.arabic_title,
                     price : productitem.price.toString(),
                     shortDescription: productitem.arabic_description,
-                    image: "https://hips.hearstapps.com/delish/assets/17/36/1504715566-delish-fettuccine-alfredo.jpg",
+                    image: "https://images-na.ssl-images-amazon.com/images/I/716OxlahWTL._AC_UY500_.jpg",
                   ),
                 )
                 .toList(),

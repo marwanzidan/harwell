@@ -152,53 +152,40 @@ List billdetails = [
 
 List photoGallery = [
   {
-    'imgUrl': 'images/feeder1.png',
+    'imgUrl': 'images/Image 2.png',
   },
   {
-    'imgUrl': 'images/feeder1.png',
+    'imgUrl': 'images/Image 2.png',
   },
   {
-    'imgUrl': 'images/feeder1.png',
+    'imgUrl': 'images/Image 2.png',
   },
 
 ];
 
 List products=[
   {
-    'name' : ' سوبر سوبريم',
-    'imgUrl' : 'images/feeder2.png',
-    'shortDescription' : ' صدور دجاج وموتزاريلا ',
+    'name' : ' حذاء رياضي تجريبي',
+    'imgUrl' : 'images/Image 4.png',
+    'shortDescription' : ' وصف تجريبي  ',
     'price' : ' 60'
 
   },
   {
-    'name' : '  بيتزا تشكين رانش',
-    'imgUrl' : 'images/feeder3.png',
-    'shortDescription' : ' صدور دجاج وموتزاريلا ',
+    'name' : '  تجربة تجربة',
+    'imgUrl' : 'images/Image 4.png',
+    'shortDescription' : ' وصف تجريبي ',
     'price' : ' 150'
 
   },
   {
-    'name' : ' سوبر سوبريم',
-    'imgUrl' : 'images/feeder2.png',
-    'shortDescription' : ' صدور دجاج وموتزاريلا ',
+    'name' : ' حذاء رياضي',
+    'imgUrl' : 'images/Image 4.png',
+    'shortDescription' : ' وصف تجريبي ',
     'price' : ' 60'
 
   },
-  {
-    'name' : '  بيتزا تشكين رانش',
-    'imgUrl' : 'images/feeder3.png',
-    'shortDescription' : ' صدور دجاج وموتزاريلا ',
-    'price' : ' 150'
 
-  },
-  {
-    'name' : ' سوبر سوبريم',
-    'imgUrl' : 'images/feeder2.png',
-    'shortDescription' : ' صدور دجاج وموتزاريلا ',
-    'price' : ' 60'
-
-  },
 ];
 
 

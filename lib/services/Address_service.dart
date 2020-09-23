@@ -5,8 +5,9 @@ import '../models/Address.dart';
 
 
 class Addressservice{
-
- Future<List<Address>> getListOfaddress() async {
+  
+  
+  Future<List<Address>> getListOfaddress() async {
       String url = "$apiUrl/addresses/$shopId"; 
       final response = await http.get(url);
        List<Address> tempList = [];
@@ -20,7 +21,5 @@ class Addressservice{
      return tempList;
   }
   
-
-
 
 }
