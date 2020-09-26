@@ -4,10 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:harwel1/endingorder.dart';
 import 'package:harwel1/main.dart';
 import 'package:harwel1/widgets/mainpageitem.dart';
-
+import 'package:easy_localization/easy_localization.dart';
 Color selectedbutton = Color(0xFFFDBA52);
-
-
 
 class Itemproperties extends StatefulWidget {
   @override
@@ -15,42 +13,44 @@ class Itemproperties extends StatefulWidget {
 }
 
 class _ItempropertiesState extends State<Itemproperties> {
-   int selectedindex =0;
+  int selectedindex = 0;
   int _current = 0;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-        title: Image(
-          image: AssetImage('images/feederlogo.png'),
-        ),
+          title: Image(
+            image: AssetImage('images/feederlogo.png'),
+          ),
           actions: [
-          Center(
-            child: IconButton(
-              splashColor: Colors.transparent,
-              highlightColor: Colors.transparent,
-              hoverColor: Colors.transparent,
-              focusColor: Colors.transparent,
-              icon: GestureDetector(
-                onTap: (){
-                  setState(() {
-                    Navigator.push(context, MaterialPageRoute( builder: (BuildContext context) => Endorder()
-                      ),
-                      );
-                    
-                    
-                  });
-                },
-                child: Icon(Icons.shopping_cart,color: Colors.black,)),
-              onPressed: () {},
-            ),
-          )
-        ],
+            Center(
+              child: IconButton(
+                splashColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                icon: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => Endorder()),
+                        );
+                      });
+                    },
+                    child: Icon(
+                      Icons.shopping_cart,
+                      color: Colors.black,
+                    )),
+                onPressed: () {},
+              ),
+            )
+          ],
         ),
-        
         body: SingleChildScrollView(
-                  child: Padding(
+          child: Padding(
             padding: const EdgeInsets.only(right: 18, left: 18, top: 9),
             child: Container(
               decoration: BoxDecoration(
@@ -70,7 +70,6 @@ class _ItempropertiesState extends State<Itemproperties> {
                           children: [
                             Container(
                               height: 300,
-
                               child: CarouselSlider(
                                 options: CarouselOptions(
                                   scrollPhysics: ScrollPhysics(),
@@ -80,7 +79,8 @@ class _ItempropertiesState extends State<Itemproperties> {
                                   reverse: false,
                                   autoPlay: true,
                                   autoPlayInterval: Duration(seconds: 3),
-                                  autoPlayAnimationDuration: Duration(seconds: 1),
+                                  autoPlayAnimationDuration:
+                                      Duration(seconds: 1),
                                   autoPlayCurve: Curves.fastOutSlowIn,
                                   scrollDirection: Axis.horizontal,
                                   onPageChanged: (index, reason) => {
@@ -93,10 +93,11 @@ class _ItempropertiesState extends State<Itemproperties> {
                                   return Builder(
                                     builder: (BuildContext context) {
                                       return Container(
-                                        width: MediaQuery.of(context).size.width,
+                                        width:
+                                            MediaQuery.of(context).size.width,
                                         child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.all(Radius.circular(12)),
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(12)),
                                           child: Image.asset(
                                             i['imgUrl'],
                                             fit: BoxFit.cover,
@@ -137,7 +138,7 @@ class _ItempropertiesState extends State<Itemproperties> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                         Padding(
+                        Padding(
                           padding: const EdgeInsets.all(25),
                           child: Text(
                             ' بيتزا سوبر سوبريم',
@@ -154,8 +155,6 @@ class _ItempropertiesState extends State<Itemproperties> {
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Row(
-                              
-                             
                               crossAxisAlignment: CrossAxisAlignment.baseline,
                               textBaseline: TextBaseline.alphabetic,
                               children: [
@@ -166,7 +165,6 @@ class _ItempropertiesState extends State<Itemproperties> {
                                       fontSize: 12,
                                       color: Color(0xFF6B6363)),
                                 ),
-                                
                                 Padding(
                                   padding: const EdgeInsets.all(2),
                                   child: Text(
@@ -177,18 +175,16 @@ class _ItempropertiesState extends State<Itemproperties> {
                                         color: Colors.black),
                                   ),
                                 ),
-                                
                               ],
                             ),
                           ),
                         ),
-                       
                       ],
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        'التفاصيل ',
+                        'details'.tr().toString(),
                         style: TextStyle(
                             color: Color(0XFFC6B2B2),
                             fontFamily: 'GESSLIGHT',
@@ -201,14 +197,13 @@ class _ItempropertiesState extends State<Itemproperties> {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
-                            'اختر الحجم',
+                            'chooseSize'.tr().toString(),
                             style: TextStyle(
                                 fontSize: 15,
                                 fontFamily: 'GESSBOLD',
                                 color: Colors.black),
                           ),
                         ),
-                        
                       ],
                     ),
                     Container(
@@ -220,37 +215,32 @@ class _ItempropertiesState extends State<Itemproperties> {
                               .map((x) => Chossing(x['size'], x['selected']))
                               .toList()),
                     ),
-
-                    
                     SizedBox(
                       height: 30,
-
                     ),
                     GestureDetector(
-                      onTap: (){
+                      onTap: () {
                         setState(() {
-                         cart.add(12345);
-
+                          cart.add(12345);
                         });
                       },
-                                          child: Container(
+                      child: Container(
                         width: double.infinity,
-                         decoration: BoxDecoration(
-                        color: Color(0xFFF6BF0B),
-                        borderRadius: BorderRadius.circular(5)
-        ),
-        child: Center(
-                      child: Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: Text('اضافة للسلة ',
-                        style: TextStyle(
-                          fontSize: 25,
-                          fontFamily: 'GESSBOLD',
-                          color : Colors.black
-                        ),),
-                      ),
-        ),
-
+                        decoration: BoxDecoration(
+                            color: Color(0xFFF6BF0B),
+                            borderRadius: BorderRadius.circular(5)),
+                        child: Center(
+                          child: Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: Text(
+                              'addToBasket'.tr().toString(),
+                              style: TextStyle(
+                                  fontSize: 25,
+                                  fontFamily: 'GESSBOLD',
+                                  color: Colors.black),
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ],
@@ -258,45 +248,37 @@ class _ItempropertiesState extends State<Itemproperties> {
               ),
             ),
           ),
-
         ),
-      bottomNavigationBar: FFNavigationBar(
-        theme: FFNavigationBarTheme(
-         barBackgroundColor: Color(0xFFF79324),
-          selectedItemBorderColor: Color(0xFFFDBA52),
-          selectedItemBackgroundColor: Color(0xFFFDBA52),
-          selectedItemIconColor: Colors.black,
-          selectedItemLabelColor: Colors.black,
-          unselectedItemIconColor: Colors.white,
-          unselectedItemLabelColor: Colors.white
+        bottomNavigationBar: FFNavigationBar(
+          theme: FFNavigationBarTheme(
+              barBackgroundColor: Color(0xFFF79324),
+              selectedItemBorderColor: Color(0xFFFDBA52),
+              selectedItemBackgroundColor: Color(0xFFFDBA52),
+              selectedItemIconColor: Colors.black,
+              selectedItemLabelColor: Colors.black,
+              unselectedItemIconColor: Colors.white,
+              unselectedItemLabelColor: Colors.white),
+          selectedIndex: selectedindex,
+          onSelectTab: (index) {
+            setState(() {
+              selectedindex = index;
+            });
+          },
+          items: [
+            FFNavigationBarItem(
+              iconData: Icons.home,
+              label: 'Home',
+            ),
+            FFNavigationBarItem(
+              iconData: Icons.search,
+              label: 'Search',
+            ),
+            FFNavigationBarItem(
+              iconData: Icons.person,
+              label: 'profile',
+            ),
+          ],
         ),
-        selectedIndex: selectedindex,
-        onSelectTab: (index) {
-          setState(() {
-            selectedindex = index;
-          });
-        },
-               items: [
-          FFNavigationBarItem(
-            iconData: Icons.home,
-            label: 'Home',
-          ),
-          FFNavigationBarItem(
-            iconData: Icons.search,
-            label: 'Search',
-          ),
-          FFNavigationBarItem(
-            iconData: Icons.category,
-            label: 'Categories',
-          ),
-          FFNavigationBarItem(
-            iconData: Icons.person,
-            label: 'profile',
-          ),
-         
-        
-        ],
-      ),
       ),
     );
   }
@@ -307,29 +289,27 @@ class Chossing extends StatelessWidget {
   final String sizeno;
   final bool sel;
 
-
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
-      decoration: BoxDecoration(
-          color: sel ? Color(0xFFFDBA52) : Color(0xFFF5F2EE),
-          borderRadius: BorderRadius.circular(5)),
-      child: Center(
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: 8,
-          ),
-          child: Text(
-            sizeno,
-            style: TextStyle(
-                fontFamily: 'LATOBLACK', fontSize: 20, color: Colors.black),
+        decoration: BoxDecoration(
+            color: sel ? Color(0xFFFDBA52) : Color(0xFFF5F2EE),
+            borderRadius: BorderRadius.circular(5)),
+        child: Center(
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: 8,
+            ),
+            child: Text(
+              sizeno,
+              style: TextStyle(
+                  fontFamily: 'LATOBLACK', fontSize: 20, color: Colors.black),
+            ),
           ),
         ),
       ),
-        ),
     );
-    
   }
 }

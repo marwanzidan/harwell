@@ -5,7 +5,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:harwel1/models/products.dart';
 import 'package:harwel1/widgets/mainpageitem.dart';
 import 'package:harwel1/services/product_service.dart';
-
+import 'package:easy_localization/easy_localization.dart';
 
 class MainPage extends StatefulWidget {
   final selectItemHandler;
@@ -16,21 +16,22 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   int _current = 0;
-   List<Product> prodcustList;
-    getProducts() async {
+  List<Product> prodcustList;
+  getProducts() async {
     var products = await Productservice().getListOfproducts();
     await Productservice().getProductDetails("4");
     setState(() {
-       prodcustList= products;
+      prodcustList = products;
     });
   }
-   
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     getProducts();
   }
+
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     print(width == 500);
@@ -45,7 +46,6 @@ class _MainPageState extends State<MainPage> {
                 Container(
                   height: 280,
                   child: CarouselSlider(
-                    
                     options: CarouselOptions(
                       viewportFraction: 1,
                       initialPage: 0,
@@ -101,7 +101,6 @@ class _MainPageState extends State<MainPage> {
                     ),
                   ),
                 ),
-                
               ],
             ),
           ),
@@ -109,19 +108,35 @@ class _MainPageState extends State<MainPage> {
         SliverPadding(
           padding: EdgeInsets.all(12),
           sliver: SliverGrid.count(
-            crossAxisCount: width > 700 ? 4  : 2,
-            childAspectRatio: width > 700 ? 0.7  : 1 ,
+            crossAxisCount: prodcustList == null
+                ? 1
+                : width > 700
+                    ? 4
+                    : 2,
+            childAspectRatio: width > 700 ? 0.7 : 9/12,
             crossAxisSpacing: 9,
             mainAxisSpacing: 9,
-            children: prodcustList == null ? [Text("جاري التحميل")] : prodcustList.map(
-                  (productitem) => MainPageItem(
-                    name: productitem.arabic_title,
-                    price : productitem.price.toString(),
-                    shortDescription: productitem.arabic_description,
-                    image: "https://images-na.ssl-images-amazon.com/images/I/716OxlahWTL._AC_UY500_.jpg",
-                  ),
-                )
-                .toList(),
+            children: prodcustList == null
+                ? [
+                    Scaffold(
+                      body: Center(
+                          child: Container(
+                              child: Text('loading'.tr().toString()))),
+                    ),
+                  ]
+                : prodcustList
+                    .map(
+                      (productitem) => MainPageItem(
+                        id: productitem.id,
+                        name: productitem.arabic_title,
+                        main_product_id: productitem.main_product_id.toString(),
+                        price: productitem.price.toString(),
+                        shortDescription: productitem.arabic_description,
+                        image:
+                            "https://images-na.ssl-images-amazon.com/images/I/716OxlahWTL._AC_UY500_.jpg",
+                      ),
+                    )
+                    .toList(),
           ),
         ),
       ],
